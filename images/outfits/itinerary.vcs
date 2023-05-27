@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 11.0 MIMEDIR//EN
+VERSION:2.0
+METHOD:PUBLISH
+
+BEGIN:VEVENT
+DTSTAMP:20230517T225721-0400
+DTSTART:20230822T011000-0400
+DTEND:20230822T054900-0400
+DESCRIPTION;ENCODING=QUOTED-PRINTABLE:=0D=0ACheck in at https://www.delta.com/myitinerary/itinSearch.action?recLocId=JLSSCN&firstName=Noor&lastName=Fakih&searchType=confirmNumberRad within 24 hours of departure=0D=0A=0D=0AReview check-in requirements for your airport at https://www.delta.com/traveling_checkin/itineraries_checkin/requirements/index.jsp=0D=0A=0D=0AItinerary Details:=0D=0ADelta Air Lines, Inc.=0D=0AFlight: DL 400 =0D=0ADeparts: San Francisco Intl on 21-Aug-2023 10:10PM =0D=0AArrives: Detroit Metro Arpt on 22-Aug-2023 05:49AM=0D=0AConfirmation #:JLSSCN=0D=0A=0D=0A=0D=0AAll times are local.=0D=0ATo add your full itinerary to your Outlook calendar, choose save to download the file to your computer and then import it from within Outlook. For more information, please see the Help section of Microsoft Outlook.=0D=0A
+LOCATION;ENCODING=QUOTED-PRINTABLE:Detroit Metro Arpt
+SUMMARY;ENCODING=QUOTED-PRINTABLE:Flight DL 400 | SFO to DTW
+PRIORITY:1
+UID:TKTNO-DELTAJLSSCN
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT1440M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+STATUS:CONFIRMED
+CATEGORIES:Travel
+END:VEVENT
+END:VCALENDAR
