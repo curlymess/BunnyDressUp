@@ -1,0 +1,30 @@
+CS193X Final Project Milestone
+==============================
+
+Project Title: <TODO>
+Your Name: <TODO>
+Your SUNetID: <TODO: the part of your email before the @, not the number>
+
+Overview
+--------
+<TODO: Let us know how things are going. What have you explored, looked into, worked on, and tried so far? What do you have left to do? Are you running into any particular difficulties or blockers?>
+
+Project Changes
+---------------
+<TODO: If you are planning to change something about your project (scope, features, etc.) from your proposal, please let us know what changes you're planning to make.>
+
+Implementation Details
+----------------------
+<TODO: Describe how you will implement (or have implemented) a specific feature or part of the project. Include specific details about the frontend (e.g. what classes you'll have and how the user interface will work) and backend (e.g. what API endpoints you'll use and how you'll store the data). As with the proposal, this can change later; we just want to make sure you've thought through some of these details.>
+
+External libraries and code
+---------------------------
+<TODO: Identify any external libraries or code you are using or plan to use, and describe how it fits into your project. Please include everything even if you already listed it in your proposal.>
+
+Collaboration and resources
+---------------------------
+<TODO: Identify any sources you have consulted or plan to consult, except for code listed above. Include those you listed previously in your proposal.>
+
+Anything else?
+--------------
+<TODO: Anything else you'd like the teaching staff to know?>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Final Project</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- This line provides automatic page and style reloading when files change -->
+  <script type="module" src="/lib/client/updater.js"></script>
+</head>
+
+<body>
+  <h1>Hello, world!</h1>
+
+  <h3>Fade in Tabs</h3>
+
+  <ul class="tab">
+    <li><a href="#" class="tablinks" onclick="openCity(event, 'London')">London</a></li>
+    <li><a href="#" class="tablinks" onclick="openCity(event, 'Paris')">Paris</a></li>
+    <li><a href="#" class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</a></li>
+  </ul>
+
+  <div id="London" class="tabcontent">
+    <h3>London</h3>
+    <p>London is the capital city of England.</p>
+  </div>
+
+  <div id="Paris" class="tabcontent">
+    <h3>Paris</h3>
+    <p>Paris is the capital of France.</p>
+  </div>
+
+  <div id="Tokyo" class="tabcontent">
+    <h3>Tokyo</h3>
+    <p>Tokyo is the capital of Japan.</p>
+  </div>
+
+  <script>
+    document.getElementsByClassName('tablinks')[0].click()
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+  </script>
+</body>
+
+</html>
