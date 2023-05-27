@@ -1,52 +1,97 @@
-body {font-family: "Lato", sans-serif;}
-    
+body {
+  font-family: "Lato", sans-serif;
+  background-color: white;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.gameContainer {
+  display: flex;
+  padding: 1em;
+  gap: 1em;
+
+}
+
+.leftHalf {
+  flex: 1;
+  background-color: #FDDDE6;
+  border: 0em dotted #ccc;
+  border-radius: 25px;
+}
+
+.rightHalf {
+  flex: 1;
+  border: .5em dotted #ccc;
+
+}
+
 ul.tab {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #FDDDE6;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border-radius: 25px;
 }
 
 /* Float the list items side by side */
-ul.tab li {float: left;}
+ul.tab li {
+  float: left;
+}
 
 /* Style the links inside the list items */
 ul.tab li a {
-    display: inline-block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 17px;
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 17px;
 }
 
 /* Change background color of links on hover */
 ul.tab li a:hover {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 /* Create an active/current tablink class */
-ul.tab li a:focus, .active {
-    background-color: #ccc;
+ul.tab li a:focus,
+.active {
+  background-color: #ccc;
 }
 
 /* Style the tab content */
 .tabcontent {
-    display: none;
-    padding: 6px 12px;
-    -webkit-animation: fadeEffect 1s;
-    animation: fadeEffect 1s;
+  display: none;
+  padding: 6px 12px;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
 }
 
 @-webkit-keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

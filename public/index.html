@@ -10,31 +10,42 @@
 </head>
 
 <body>
-  <h1>Hello, world!</h1>
+  <h1>Bunny Dress-Up Game</h1>
+  <h3>Noor Fakih, Spring 2023, CS193X Final Project </h3>
 
-  <h3>Fade in Tabs</h3>
-
-  <ul class="tab">
-    <li><a href="#" class="tablinks" onclick="openCity(event, 'London')">London</a></li>
-    <li><a href="#" class="tablinks" onclick="openCity(event, 'Paris')">Paris</a></li>
-    <li><a href="#" class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</a></li>
-  </ul>
-
-  <div id="London" class="tabcontent">
-    <h3>London</h3>
-    <p>London is the capital city of England.</p>
+  <div class="gameContainer">
+    <div class="leftHalf">
+      <ul class="tab">
+        <li><a href="#" class="tablinks" onclick="openCity(event, 'bg')">
+            <img src="/images/icons/background.svg" alt="Backgrounds">
+          </a></li>
+        <li><a href="#" class="tablinks" onclick="openCity(event, 'outfit')">
+            <img src="/images/icons/outfit.svg" alt="Outfits">
+          </a></li>
+        <li><a href="#" class="tablinks" onclick="openCity(event, 'acc')">
+            <img src="/images/icons/extra.svg" alt="Accessories">
+          </a></li>
+      </ul>
+    
+        <div id="bg" class="tabcontent">
+          <p>London is the capital city of England.</p>
+        </div>
+    
+        <div id="outfit" class="tabcontent">
+          <p>Paris is the capital of France.</p>
+        </div>
+    
+        <div id="acc" class="tabcontent">
+          <p>Tokyo is the capital of Japan.</p>
+        </div>
+      </div>
+    
+      <div id="bunny" class="rightHalf">
+        <img src="/images/bunny.png">
+      </div>
+    
   </div>
-
-  <div id="Paris" class="tabcontent">
-    <h3>Paris</h3>
-    <p>Paris is the capital of France.</p>
-  </div>
-
-  <div id="Tokyo" class="tabcontent">
-    <h3>Tokyo</h3>
-    <p>Tokyo is the capital of Japan.</p>
-  </div>
-
+  
   <script>
     document.getElementsByClassName('tablinks')[0].click()
     function openCity(evt, cityName) {
