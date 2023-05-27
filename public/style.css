@@ -1,6 +1,6 @@
 body {
   font-family: "Lato", sans-serif;
-  background-color: white;
+  background-color: #ffebe8;
 }
 
 img {
@@ -26,7 +26,19 @@ img {
 .rightHalf {
   flex: 1;
   border: .5em dotted #ccc;
+  background-color: white;
+  border-radius: 25px;
 
+}
+
+.myGallery {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.myGallery img {
+  width: 100%;
 }
 
 ul.tab {
