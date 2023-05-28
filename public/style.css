@@ -18,7 +18,6 @@ h1 {
 }
 
 h3 {
-  font-family: 'Kranky', cursive;
   text-align: center;
 }
 
@@ -34,7 +33,7 @@ h3 {
   border: 0em dotted #ccc;
   border-radius: 25px;
   flex: 1;
-  overflow: scroll;
+  overflow-y: scroll;
 
 }
 
