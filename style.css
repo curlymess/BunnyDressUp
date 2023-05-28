@@ -1,6 +1,9 @@
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'lato', sans-serif;
   background-color: #ffebe8;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 img {
@@ -9,44 +12,72 @@ img {
   object-fit: contain;
 }
 
+h1 {
+  font-family: 'Chewy', cursive;
+  text-align: center;
+}
+
+h3 {
+  font-family: 'Kranky', cursive;
+  text-align: center;
+}
+
 .gameContainer {
   display: flex;
   padding: 1em;
   gap: 1em;
-
+  height: 80%;
 }
 
 .leftHalf {
   background-color: #FDDDE6;
   border: 0em dotted #ccc;
   border-radius: 25px;
+  flex: 1;
+  overflow: scroll;
+
 }
 
+/********** RIGHT PANEL ************/
 .rightHalf {
-  border: .5em dotted #ccc;
-  background-color: white;
+  border: .5em dotted #FDDDE6;
   border-radius: 25px;
   position: relative;
+  flex: 3;
 }
 
 .rightHalf img {
   object-fit: contain;
 }
 
-#bgImg {
+/********** Bunny Display ************/
+#bunnyContainer{
   position: relative;
+}
+
+#bgImg {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 #bunnyImg {
   position: absolute;
+  top: 0;
+  left: 0;
 }
 #outfitImg {
   position: absolute;
+  top: 0;
+  left: 0;
 }
 #extraImg {
   position: absolute;
+  top: 0;
+  left: 0;
 }
 
-
+/********** LEFT PANEL ************/
+/********** Grid Display Items ************/
 .myGallery {
   display: grid;
   grid-gap: 10px;
@@ -58,6 +89,7 @@ img {
   overflow: hidden;
 }
 
+/********** Tab Display Items ************/
 ul.tab {
   list-style-type: none;
   margin: 0;

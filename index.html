@@ -5,14 +5,20 @@
   <meta charset="UTF-8">
   <title>Final Project</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Kranky&display=swap" rel="stylesheet">
+
   <!-- This line provides automatic page and style reloading when files change -->
   <script type="module" src="/lib/client/updater.js"></script>
 </head>
 
 <body>
-  <h1>Bunny Dress-Up Game</h1>
-  <h3>Noor Fakih, Spring 2023, CS193X Final Project </h3>
-
+  <div class="infoContainer">
+    <h1>Bunny Dress-Up Game</h1>
+    <h3>Noor Fakih, Spring 2023, CS193X Final Project </h3>
+  </div>
+  
   <div class="gameContainer">
     <div class="leftHalf">
       <ul class="tab">
@@ -30,47 +36,71 @@
       <div id="bg" class="tabcontent">
         <div class="myGallery">
           <a href="#" onclick="changeBg(event, '/images/no.png')"><img src="/images/no.svg" alt="option: nothing" /></a>
-          <a href="#" onclick="changeBg(event, '/images/bg/bg0.png')"><img src="/images/bg/bg0.png" alt="background option 0" /></a>
-          <a href="#" onclick="changeBg(event, '/images/bg/bg1.png')"><img src="/images/bg/bg1.png" alt="background option 1" /></a>
-          <a href="#" onclick="changeBg(event, '/images/bg/bg2.png')"><img src="/images/bg/bg2.png" alt="background option 2" /></a>
-          <a href="#" onclick="changeBg(event, '/images/bg/bg3.png')"><img src="/images/bg/bg3.png" alt="background option 3" /></a>
-          <a href="#" onclick="changeBg(event, '/images/bg/bg4.png')"><img src="/images/bg/bg4.png" alt="background option 4" /></a>
+          <a href="#" onclick="changeBg(event, '/images/bg/bg0.png')"><img src="/images/bg/bg0.png"
+              alt="background option 0" /></a>
+          <a href="#" onclick="changeBg(event, '/images/bg/bg1.png')"><img src="/images/bg/bg1.png"
+              alt="background option 1" /></a>
+          <a href="#" onclick="changeBg(event, '/images/bg/bg2.png')"><img src="/images/bg/bg2.png"
+              alt="background option 2" /></a>
+          <a href="#" onclick="changeBg(event, '/images/bg/bg3.png')"><img src="/images/bg/bg3.png"
+              alt="background option 3" /></a>
+          <a href="#" onclick="changeBg(event, '/images/bg/bg4.png')"><img src="/images/bg/bg4.png"
+              alt="background option 4" /></a>
         </div>
       </div>
 
       <div id="outfit" class="tabcontent">
         <div class="myGallery" id="outfitGallery">
-          <a href="#" onclick="changeOutfit(event, '/images/no.png')"><img src="/images/no.svg" alt="option: nothing" /></a>
-          <a href="#" onclick="changeOutfit(event, '/images/outfits/o0.png')"><img src="/images/outfits/o0.png" alt="outfits option 0" /></a>
-          <a href="#" onclick="changeOutfit(event, '/images/outfits/o1.png')"><img src="/images/outfits/o1.png" alt="outfits option 1" /></a>
-          <a href="#" onclick="changeOutfit(event, '/images/outfits/o2.png')"><img src="/images/outfits/o2.png" alt="outfits option 2" /></a>
-          <a href="#" onclick="changeOutfit(event, '/images/outfits/o3.png')"><img src="/images/outfits/o3.png" alt="outfits option 3" /></a>
-          <a href="#" onclick="changeOutfit(event, '/images/outfits/o4.png')"><img src="/images/outfits/o4.png" alt="outfits option 4" /></a>
-          <a href="#" onclick="changeOutfit(event, '/images/outfits/o5.png')"><img src="/images/outfits/o5.png" alt="outfits option 5" /></a>
+          <a href="#" onclick="changeOutfit(event, '/images/no.png')"><img src="/images/no.svg"
+              alt="option: nothing" /></a>
+          <a href="#" onclick="changeOutfit(event, '/images/outfits/o0.png')"><img src="/images/outfits/o0.png"
+              alt="outfits option 0" /></a>
+          <a href="#" onclick="changeOutfit(event, '/images/outfits/o1.png')"><img src="/images/outfits/o1.png"
+              alt="outfits option 1" /></a>
+          <a href="#" onclick="changeOutfit(event, '/images/outfits/o2.png')"><img src="/images/outfits/o2.png"
+              alt="outfits option 2" /></a>
+          <a href="#" onclick="changeOutfit(event, '/images/outfits/o3.png')"><img src="/images/outfits/o3.png"
+              alt="outfits option 3" /></a>
+          <a href="#" onclick="changeOutfit(event, '/images/outfits/o4.png')"><img src="/images/outfits/o4.png"
+              alt="outfits option 4" /></a>
+          <a href="#" onclick="changeOutfit(event, '/images/outfits/o5.png')"><img src="/images/outfits/o5.png"
+              alt="outfits option 5" /></a>
         </div>
       </div>
 
       <div id="acc" class="tabcontent">
         <div class="myGallery">
-          <a href="#" onclick="changeExtra(event, '/images/no.png')"><img src="/images/no.svg" alt="option: nothing" /></a>
-          <a href="#" onclick="changeExtra(event, '/images/extra/a0.png')"><img src="/images/extra/a0.png" alt="accessory option 0" /></a>
-          <a href="#" onclick="changeExtra(event, '/images/extra/a1.png')"><img src="/images/extra/a1.png" alt="accessory option 1" /></a>
-          <a href="#" onclick="changeExtra(event, '/images/extra/a2.png')"><img src="/images/extra/a2.png" alt="accessory option 2" /></a>
-          <a href="#" onclick="changeExtra(event, '/images/extra/a3.png')"><img src="/images/extra/a3.png" alt="accessory option 3" /></a>
-          <a href="#" onclick="changeExtra(event, '/images/extra/a4.png')"><img src="/images/extra/a4.png" alt="accessory option 4" /></a>
-          <a href="#" onclick="changeExtra(event, '/images/extra/a5.png')"><img src="/images/extra/a5.png" alt="accessory option 5" /></a>
-          <a href="#" onclick="changeExtra(event, '/images/extra/a6.png')"><img src="/images/extra/a6.png" alt="accessory option 6" /></a>
+          <a href="#" onclick="changeExtra(event, '/images/no.png')"><img src="/images/no.svg"
+              alt="option: nothing" /></a>
+          <a href="#" onclick="changeExtra(event, '/images/extra/a0.png')"><img src="/images/extra/a0.png"
+              alt="accessory option 0" /></a>
+          <a href="#" onclick="changeExtra(event, '/images/extra/a1.png')"><img src="/images/extra/a1.png"
+              alt="accessory option 1" /></a>
+          <a href="#" onclick="changeExtra(event, '/images/extra/a2.png')"><img src="/images/extra/a2.png"
+              alt="accessory option 2" /></a>
+          <a href="#" onclick="changeExtra(event, '/images/extra/a3.png')"><img src="/images/extra/a3.png"
+              alt="accessory option 3" /></a>
+          <a href="#" onclick="changeExtra(event, '/images/extra/a4.png')"><img src="/images/extra/a4.png"
+              alt="accessory option 4" /></a>
+          <a href="#" onclick="changeExtra(event, '/images/extra/a5.png')"><img src="/images/extra/a5.png"
+              alt="accessory option 5" /></a>
+          <a href="#" onclick="changeExtra(event, '/images/extra/a6.png')"><img src="/images/extra/a6.png"
+              alt="accessory option 6" /></a>
         </div>
       </div>
     </div>
 
     <div class="rightHalf">
+      <div id="bunnyContainer">
+        <img src="/images/no.png" alt="">
+      </div>
       <div><img src="/images/bg/bg0.png" id="bgImg"></div>
       <div><img src="/images/bunny.png" id="bunnyImg"></div>
       <div><img src="/images/outfits/o0.png" id="outfitImg"></div>
       <div><img src="/images/extra/a0.png" id="extraImg"></div>
+
+
     </div>
-  </div>
 
   </div>
 
