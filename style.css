@@ -37,12 +37,13 @@ h3 {
 
 }
 
-/********** RIGHT PANEL ************/
+/************************ RIGHT PANEL ************************/
 .rightHalf {
-  border: .5em dotted #FDDDE6;
   border-radius: 25px;
   position: relative;
   flex: 3;
+  display: flex;
+  flex-direction: column;
 }
 
 .rightHalf img {
@@ -50,7 +51,10 @@ h3 {
 }
 
 /********** Bunny Display ************/
-#bunnyContainer{
+#bunnyContainer0{
+  position: relative;
+}
+#bunnyContainer1{
   position: relative;
 }
 
@@ -75,7 +79,26 @@ h3 {
   left: 0;
 }
 
-/********** LEFT PANEL ************/
+/********** Load Display ************/
+#loadContainer {
+  background-color: #FDDDE6;
+  border-radius: 25px;
+  padding: 10px;
+}
+
+#loadContainer button{
+  background-color: white;
+  border: 0.1em lavender solid;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#closetContainer{
+  display: flex;
+  gap: 10px;
+}
+
+/************************ LEFT PANEL ************************/
 /********** Grid Display Items ************/
 .myGallery {
   display: grid;
