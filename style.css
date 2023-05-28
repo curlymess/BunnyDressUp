@@ -33,7 +33,7 @@ h3 {
   border: 0em dotted #ccc;
   border-radius: 25px;
   flex: 1;
-  overflow-y: scroll;
+  overflow-y: auto;
 
 }
 
