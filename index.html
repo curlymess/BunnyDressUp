@@ -26,50 +26,54 @@
             <img src="/images/icons/extra.svg" alt="Accessories">
           </a></li>
       </ul>
-    
-        <div id="bg" class="tabcontent">
-          <div class="myGallery">
-            <img src="/images/no.svg" alt="option: nothing"/>
-            <img src="/images/bg/bg0.png" alt="background option 0"/>
-            <img src="/images/bg/bg1.png" alt="background option 1"/>
-            <img src="/images/bg/bg2.png" alt="background option 2"/>
-            <img src="/images/bg/bg3.png" alt="background option 3"/>
-            <img src="/images/bg/bg4.png" alt="background option 4"/>
-          </div>
-        </div>
-    
-        <div id="outfit" class="tabcontent">
-          <div class="myGallery">
-            <img src="/images/no.svg" alt="option: nothing"/>
-            <img src="/images/outfits/o0.png" alt="outfits option 0"/>
-            <img src="/images/outfits/o1.png" alt="outfits option 1"/>
-            <img src="/images/outfits/o2.png" alt="outfits option 2"/>
-            <img src="/images/outfits/o3.png" alt="outfits option 3"/>
-            <img src="/images/outfits/o4.png" alt="outfits option 4"/>
-            <img src="/images/outfits/o5.png" alt="outfits option 5"/>
-          </div>
-        </div>
-    
-        <div id="acc" class="tabcontent">
-          <div class="myGallery">
-            <img src="/images/no.svg" alt="option: nothing"/>
-            <img src="/images/extra/a0.png" alt="accessory option 0"/>
-            <img src="/images/extra/a1.png" alt="accessory option 1"/>
-            <img src="/images/extra/a2.png" alt="accessory option 2"/>
-            <img src="/images/extra/a3.png" alt="accessory option 3"/>
-            <img src="/images/extra/a4.png" alt="accessory option 4"/>
-            <img src="/images/extra/a5.png" alt="accessory option 5"/>
-            <img src="/images/extra/a6.png" alt="accessory option 6"/>
-          </div>
+
+      <div id="bg" class="tabcontent">
+        <div class="myGallery">
+          <a href="#" onclick="changeBg(event, '/images/no.svg')"><img src="/images/no.svg" alt="option: nothing" /></a>
+          <img src="/images/bg/bg0.png" alt="background option 0" />
+          <img src="/images/bg/bg1.png" alt="background option 1" />
+          <img src="/images/bg/bg2.png" alt="background option 2" />
+          <img src="/images/bg/bg3.png" alt="background option 3" />
+          <img src="/images/bg/bg4.png" alt="background option 4" />
         </div>
       </div>
-    
-      <div id="bunny" class="rightHalf">
-        <img src="/images/bunny.png">
+
+      <div id="outfit" class="tabcontent">
+        <div class="myGallery" id="outfitGallery">
+          <img src="/images/no.svg" alt="option: nothing" class="nullImg" />
+          <img src="/images/outfits/o0.png" alt="outfits option 0" />
+          <img src="/images/outfits/o1.png" alt="outfits option 1" />
+          <img src="/images/outfits/o2.png" alt="outfits option 2" />
+          <img src="/images/outfits/o3.png" alt="outfits option 3" />
+          <img src="/images/outfits/o4.png" alt="outfits option 4" />
+          <img src="/images/outfits/o5.png" alt="outfits option 5" />
+        </div>
       </div>
-    
+
+      <div id="acc" class="tabcontent">
+        <div class="myGallery">
+          <img src="/images/no.svg" alt="option: nothing" />
+          <img src="/images/extra/a0.png" alt="accessory option 0" />
+          <img src="/images/extra/a1.png" alt="accessory option 1" />
+          <img src="/images/extra/a2.png" alt="accessory option 2" />
+          <img src="/images/extra/a3.png" alt="accessory option 3" />
+          <img src="/images/extra/a4.png" alt="accessory option 4" />
+          <img src="/images/extra/a5.png" alt="accessory option 5" />
+          <img src="/images/extra/a6.png" alt="accessory option 6" />
+        </div>
+      </div>
+    </div>
+
+    <div class="rightHalf">
+      <div><img src="/images/bg/bg0.png"></div>
+      <div><img src="/images/bunny.png"></div>
+      <div><img src="/images/outfits/o0.png"></div>
+      <div><img src="/images/extra/a0.png"></div>
+    </div>
   </div>
-  
+
+  </div>
+
   <script>
     document.getElementsByClassName('tablinks')[0].click()
     function openCity(evt, cityName) {
@@ -84,6 +88,12 @@
       }
       document.getElementById(cityName).style.display = "block";
       evt.currentTarget.className += " active";
+    }
+
+    function changeBg(event, bgSrc) {
+      console.log("inside function changebg");
+      var bgImg = document.getElementById("bgImg");
+      bgImg.src = bgSrc;
     }
   </script>
 </body>

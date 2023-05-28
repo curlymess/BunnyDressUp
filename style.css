@@ -17,19 +17,44 @@ img {
 }
 
 .leftHalf {
-  flex: 1;
   background-color: #FDDDE6;
   border: 0em dotted #ccc;
   border-radius: 25px;
 }
 
 .rightHalf {
-  flex: 1;
   border: .5em dotted #ccc;
   background-color: white;
   border-radius: 25px;
+  position: relative;
 
 }
+
+.rightHalf img {
+  object-fit: contain;
+}
+
+#background {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+}
+#bunny {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+}
+#outfits {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+}
+#extras {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+}
+
 
 .myGallery {
   display: grid;
@@ -39,6 +64,7 @@ img {
 
 .myGallery img {
   width: 100%;
+  overflow: hidden;
 }
 
 ul.tab {
