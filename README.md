@@ -1,2 +1,2 @@
 # BunnyDressUp
-[link](index.html)
+[link](public/index.html)
