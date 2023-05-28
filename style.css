@@ -27,32 +27,23 @@ img {
   background-color: white;
   border-radius: 25px;
   position: relative;
-
 }
 
 .rightHalf img {
   object-fit: contain;
 }
 
-#background {
-  position: absolute;
-  width: 500px;
-  height: 500px;
+#bgImg {
+  position: relative;
 }
-#bunny {
+#bunnyImg {
   position: absolute;
-  width: 500px;
-  height: 500px;
 }
-#outfits {
+#outfitImg {
   position: absolute;
-  width: 500px;
-  height: 500px;
 }
-#extras {
+#extraImg {
   position: absolute;
-  width: 500px;
-  height: 500px;
 }
 
 
