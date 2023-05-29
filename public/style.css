@@ -25,7 +25,11 @@ h3 {
   display: flex;
   padding: 1em;
   gap: 1em;
-  height: 80%;
+  min-height: 0;
+}
+.infoContainer{
+  display: flex;
+  justify-content: center;
 }
 
 .leftHalf {
@@ -34,6 +38,7 @@ h3 {
   border-radius: 25px;
   flex: 1;
   overflow-y: auto;
+  height: 100%;
 
 }
 
@@ -46,13 +51,11 @@ h3 {
   flex-direction: column;
 }
 
-.rightHalf img {
-  object-fit: contain;
-}
-
 /********** Bunny Display ************/
 #bunnyContainer0{
+  display: flex;
   position: relative;
+  height: 90%;
 }
 #bunnyContainer1{
   position: relative;
@@ -84,6 +87,9 @@ h3 {
   background-color: #FDDDE6;
   border-radius: 25px;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 #loadContainer button{
