@@ -1,0 +1,29 @@
+CS193X Final Project Proposal
+=============================
+
+Project Title: Cute Dress-Up Game
+Your Name: Noor Fakih
+Your SUNetID: nfakih
+
+Description
+-----------
+a dress-up game where the user can:
+- change hat, outfit and/or shoes
+- save outfit in gallery
+- load outfit from gallery
+
+Milestone(s)
+------------
+By the milestone I would like to have the skeleton of the website up and all the images done.
+
+External libraries and code
+---------------------------
+n/a - only need js, html and mongodb!
+
+Collaboration and resources
+---------------------------
+I will probaby draw the outfit items myself! No other resources needed other than documentation and course material.
+
+Anything else?
+-------------
+I did turn this in late so unsure of penalty but I have an OAE letter previously shared with staff if needed!

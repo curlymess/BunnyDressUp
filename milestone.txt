@@ -1,30 +1,32 @@
 CS193X Final Project Milestone
 ==============================
 
-Project Title: <TODO>
-Your Name: <TODO>
-Your SUNetID: <TODO: the part of your email before the @, not the number>
+Project Title: Bunny Dress-Up
+Your Name: Noor Fakih
+Your SUNetID: nfakih
 
 Overview
 --------
-<TODO: Let us know how things are going. What have you explored, looked into, worked on, and tried so far? What do you have left to do? Are you running into any particular difficulties or blockers?>
+So far, things are good! I created basically all the front end and explored sign in with google. I want the user to be able to log in and save the bunnies they create. I am currently switching the code into a format with classes but hopedully that will be fine. I am a bit nervous about using mongo again but no trouble yet.
+
 
 Project Changes
 ---------------
-<TODO: If you are planning to change something about your project (scope, features, etc.) from your proposal, please let us know what changes you're planning to make.>
+I might have the user sign in with google!
 
 Implementation Details
 ----------------------
-<TODO: Describe how you will implement (or have implemented) a specific feature or part of the project. Include specific details about the frontend (e.g. what classes you'll have and how the user interface will work) and backend (e.g. what API endpoints you'll use and how you'll store the data). As with the proposal, this can change later; we just want to make sure you've thought through some of these details.>
+Frontend:
+The user is fully able to change the bunny's outfit, background and accessory. I will switch the implementation to one that utilizes classes. There will be a Closet class that will hold the background, outfits, and accessory info. The Bunny class will represent the a version of the dressed up bunny. The User class will have the user email as their unique id and an array of Bunny objects to represent their saved outfits.
 
 External libraries and code
 ---------------------------
-<TODO: Identify any external libraries or code you are using or plan to use, and describe how it fits into your project. Please include everything even if you already listed it in your proposal.>
+Google Sign-In
 
 Collaboration and resources
 ---------------------------
-<TODO: Identify any sources you have consulted or plan to consult, except for code listed above. Include those you listed previously in your proposal.>
+Google Sign-In documentation: https://developers.google.com/identity/gsi/web/guides/client-library
 
 Anything else?
 --------------
-<TODO: Anything else you'd like the teaching staff to know?>
+thanks!
