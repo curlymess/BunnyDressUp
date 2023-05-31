@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Kranky&display=swap" rel="stylesheet">
-
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <!-- This line provides automatic page and style reloading when files change -->
   <script type="module" src="/lib/client/updater.js"></script>
 </head>
@@ -99,14 +99,22 @@
         <div><img src="images/no.png" id="outfitImg"></div>
         <div><img src="images/no.png" id="extraImg"></div>
       </div>
-    
+
       <div id="loadContainer">
         <h3>My Closet</h3>
-        <div id="closetContainer">
-          <button>1 - click here to save outfit</button>
-          <button>click here to save outfit</button>
-          <button>click here to save outfit</button>
+        <div id="g_id_onload" data-client_id="297076872738-tpnj678k0m7690tqfu04n6pk75s3osrj.apps.googleusercontent.com"
+          data-context="signin" data-ux_mode="popup" data-callback="handleLogin" data-auto_prompt="false">
         </div>
+
+        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="signin_with"
+          data-size="large" data-logo_alignment="left">
+        </div>
+
+        <!-- <div id="closetContainer">
+          <button>click here to save outfit</button>
+          <button>click here to save outfit</button>
+          <button>click here to save outfit</button>
+        </div> -->
       </div>
 
     </div>
