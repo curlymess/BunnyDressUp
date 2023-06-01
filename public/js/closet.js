@@ -1,21 +1,21 @@
-export default class Closet {
-  constructor() {
-    this.bg = null;
-    this.outfit = "images/outfit/o0.png";
-    this.extra = "images/extra/a0.png";
-  }
-
-  fillCloset() {
-    this.bg = [
-      "images/bg/bg0.png",
-      "images/bg/bg1.png",
-      "images/bg/bg2.png",
-      "images/bg/bg3.png",
-      "images/bg/bg4.png"
-    ];
-  }
-
-  toString() {
-    return this.bg;
-  }
-}
+const CLOSET = {
+  bg: {
+    0: "images",
+    1: "images",
+    2: "images",
+  },
+  clothes: {
+    0: "images",
+    1: "images",
+    2: "images",
+  },
+  extra: {
+    0: "images",
+    1: "images",
+    2: "images",
+  },
+  none: "images/",
+  bunny: "images/bunny.png"
+};
+window.CLOSET = CLOSET;
+export default CLOSET;

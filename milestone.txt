@@ -29,4 +29,5 @@ Google Sign-In documentation: https://developers.google.com/identity/gsi/web/gui
 
 Anything else?
 --------------
-thanks!
+you can view it here
+https://curlymess.github.io/BunnyDressUp/public/index.html#

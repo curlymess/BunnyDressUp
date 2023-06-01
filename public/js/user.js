@@ -1,9 +1,20 @@
 export default class User {
-  constructor() {
-    this.user = null;
+  constructor(email, bunnies) {
+    this.email = email;
+    this.savedBunnies = bunnies;
   }
 
-  render() {
-    return this.bg;
+  email() {
+    return this.email;
   }
+
+  bunnies() {
+    return this.savedBunnies;
+  }
+
+  toString() {
+    return `${this.email}`;
+  }
+
+
 }
