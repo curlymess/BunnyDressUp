@@ -48,41 +48,27 @@
 
       <div id="outfit" class="tabcontent">
         <div class="myGallery" id="clothesGallery">
-          <button onclick="changeClothes(event, 'images/no.png')"><img src="images/no.svg"
-              alt="option: nothing" /></button>
-          <button onclick="changeClothes(event, 'images/clothes/o0.png')"><img src="images/clothes/o0.png"
-              alt="outfits option 0" /></button>
-          <button onclick="changeClothes(event, 'images/clothes/o1.png')"><img src="images/clothes/o1.png"
-              alt="outfits option 1" /></button>
-          <button onclick="changeClothes(event, 'images/clothes/o2.png')"><img src="images/clothes/o2.png"
-              alt="outfits option 2" /></button>
-          <button onclick="changeClothes(event, 'images/clothes/o3.png')"><img src="images/clothes/o3.png"
-              alt="outfits option 3" /></button>
-          <button onclick="changeClothes(event, 'images/clothes/o4.png')"><img src="images/clothes/o4.png"
-              alt="outfits option 4" /></button>
-          <button onclick="changeClothes(event, 'images/clothes/o5.png')"><img src="images/clothes/o5.png"
-              alt="outfits option 5" /></button>
+          <button><img src="images/no.svg" alt="option: nothing" class="cBttn" id="cNone" /></button>
+          <button><img src="images/clothes/o0.png" alt="clothes option 0" class="cBttn" id="c0"/></button>
+          <button><img src="images/clothes/o1.png" alt="clothes option 1" class="cBttn" id="c1"/></button>
+          <button><img src="images/clothes/o2.png" alt="clothes option 2" class="cBttn" id="c2"/></button>
+          <button><img src="images/clothes/o3.png" alt="clothes option 3" class="cBttn" id="c3"/></button>
+          <button><img src="images/clothes/o4.png" alt="clothes option 4" class="cBttn" id="c4"/></button>
+          <button><img src="images/clothes/o5.png" alt="clothes option 5" class="cBttn" id="c5"/></button>
         </div>
       </div>
 
       <div id="acc" class="tabcontent">
         <div class="myGallery">
-          <button onclick="changeExtra(event, CLOSET)"><img src="images/no.svg"
-              alt="option: nothing" /></button>
-          <button onclick="changeExtra(event, 'images/extra/a0.png')"><img src="images/extra/a0.png"
-              alt="accessory option 0" /></button>
-          <button onclick="changeExtra(event, 'images/extra/a1.png')"><img src="images/extra/a1.png"
-              alt="accessory option 1" /></button>
-          <button onclick="changeExtra(event, 'images/extra/a2.png')"><img src="images/extra/a2.png"
-              alt="accessory option 2" /></button>
-          <button onclick="changeExtra(event, 'images/extra/a3.png')"><img src="images/extra/a3.png"
-              alt="accessory option 3" /></button>
-          <button onclick="changeExtra(event, 'images/extra/a4.png')"><img src="images/extra/a4.png"
-              alt="accessory option 4" /></button>
-          <button onclick="changeExtra(event, 'images/extra/a5.png')"><img src="images/extra/a5.png"
-              alt="accessory option 5" /></button>
-          <button onclick="changeExtra(event, 'images/extra/a6.png')"><img src="images/extra/a6.png"
-              alt="accessory option 6" /></button>
+          <button><img src="images/no.svg" alt="option: nothing" class="eBttn" id="eNone" /></button>
+          <button><img src="images/extra/a0.png" alt="accessory option 0" class="eBttn" id="e0" /></button>
+          <button><img src="images/extra/a1.png" alt="accessory option 1" class="eBttn" id="e1" /></button>
+          <button><img src="images/extra/a2.png" alt="accessory option 2" class="eBttn" id="e2" /></button>
+          <button><img src="images/extra/a3.png" alt="accessory option 3" class="eBttn" id="e3" /></button>
+          <button><img src="images/extra/a4.png" alt="accessory option 4" class="eBttn" id="e4" /></button>
+          <button><img src="images/extra/a5.png" alt="accessory option 5" class="eBttn" id="e5" /></button>
+          <button><img src="images/extra/a6.png" alt="accessory option 6" class="eBttn" id="e6" /></button>
+
         </div>
       </div>
     </div>
@@ -134,21 +120,6 @@
       document.getElementById(cityName).style.display = "block";
       evt.currentTarget.className += " active";
     }
-
-    function changeClothes(event, imgSrc) {
-      event.preventDefault();
-      console.log("inside function changeClothes");
-      var imgElem = document.getElementById("outfitImg");
-      imgElem.src = imgSrc;
-    }
-
-    function changeExtra(event, imgSrc) {
-      event.preventDefault();
-      console.log("inside function changeExtra");
-      var imgElem = document.getElementById("extraImg");
-      imgElem.src = imgSrc;
-    }
-
   </script>
 </body>
 
