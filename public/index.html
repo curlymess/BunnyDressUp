@@ -38,23 +38,23 @@
       <div id="bg" class="tabcontent">
         <div class="myGallery">
           <button><img src="images/no.svg" alt="option: nothing" class="bgBttn" id="bgNone" /></button>
-          <button><img src="images/bg/bg0.png" alt="background option 0" class="bgBttn" id="bg0"/></button>
-          <button><img src="images/bg/bg1.png" alt="background option 1" class="bgBttn" id="bg1"/></button>
-          <button><img src="images/bg/bg2.png" alt="background option 2" class="bgBttn" id="bg2"/></button>
-          <button><img src="images/bg/bg3.png" alt="background option 3" class="bgBttn" id="bg3"/></button>
-          <button><img src="images/bg/bg4.png" alt="background option 4" class="bgBttn" id="bg4"/></button>
+          <button><img src="images/bg/bg0.png" alt="background option 0" class="bgBttn" id="bg0" /></button>
+          <button><img src="images/bg/bg1.png" alt="background option 1" class="bgBttn" id="bg1" /></button>
+          <button><img src="images/bg/bg2.png" alt="background option 2" class="bgBttn" id="bg2" /></button>
+          <button><img src="images/bg/bg3.png" alt="background option 3" class="bgBttn" id="bg3" /></button>
+          <button><img src="images/bg/bg4.png" alt="background option 4" class="bgBttn" id="bg4" /></button>
         </div>
       </div>
 
       <div id="outfit" class="tabcontent">
         <div class="myGallery" id="clothesGallery">
           <button><img src="images/no.svg" alt="option: nothing" class="cBttn" id="cNone" /></button>
-          <button><img src="images/clothes/o0.png" alt="clothes option 0" class="cBttn" id="c0"/></button>
-          <button><img src="images/clothes/o1.png" alt="clothes option 1" class="cBttn" id="c1"/></button>
-          <button><img src="images/clothes/o2.png" alt="clothes option 2" class="cBttn" id="c2"/></button>
-          <button><img src="images/clothes/o3.png" alt="clothes option 3" class="cBttn" id="c3"/></button>
-          <button><img src="images/clothes/o4.png" alt="clothes option 4" class="cBttn" id="c4"/></button>
-          <button><img src="images/clothes/o5.png" alt="clothes option 5" class="cBttn" id="c5"/></button>
+          <button><img src="images/clothes/o0.png" alt="clothes option 0" class="cBttn" id="c0" /></button>
+          <button><img src="images/clothes/o1.png" alt="clothes option 1" class="cBttn" id="c1" /></button>
+          <button><img src="images/clothes/o2.png" alt="clothes option 2" class="cBttn" id="c2" /></button>
+          <button><img src="images/clothes/o3.png" alt="clothes option 3" class="cBttn" id="c3" /></button>
+          <button><img src="images/clothes/o4.png" alt="clothes option 4" class="cBttn" id="c4" /></button>
+          <button><img src="images/clothes/o5.png" alt="clothes option 5" class="cBttn" id="c5" /></button>
         </div>
       </div>
 
@@ -84,23 +84,23 @@
         <div><img src="images/no.png" id="extraImg"></div>
       </div>
 
-      <div id="loadContainer">
-        <h3>My Closet</h3>
-        <!-- <div id="g_id_onload" data-client_id="297076872738-tpnj678k0m7690tqfu04n6pk75s3osrj.apps.googleusercontent.com"
-          data-context="signin" data-ux_mode="popup" data-callback="handleLogin" data-auto_prompt="false">
+      <div id="saveContainer">
+        <div id="notLoggedInDiv">
+          <h3>Sign in to save your outfits!</h3>
+          <div id="g_id_onload"
+            data-client_id="297076872738-tpnj678k0m7690tqfu04n6pk75s3osrj.apps.googleusercontent.com"
+            data-context="signin" data-ux_mode="popup" data-callback="handleLogin" data-auto_prompt="false">
+          </div>
+          <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="signin_with"
+            data-size="large" data-logo_alignment="left">
+          </div>
         </div>
-
-        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="signin_with"
-          data-size="large" data-logo_alignment="left">
-        </div> -->
-
-        <!-- <div id="closetContainer">
+        <div id="loggedInDiv">
           <button>click here to save outfit</button>
           <button>click here to save outfit</button>
           <button>click here to save outfit</button>
-        </div> -->
+        </div>
       </div>
-
     </div>
 
   </div>
@@ -119,6 +119,10 @@
       }
       document.getElementById(cityName).style.display = "block";
       evt.currentTarget.className += " active";
+    }
+
+    function handleLogin(event){
+      console.log("inside login");
     }
   </script>
 </body>

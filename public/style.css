@@ -83,25 +83,29 @@ h3 {
 }
 
 /********** Load Display ************/
-#loadContainer {
+#saveContainer {
   background-color: #FDDDE6;
   border-radius: 25px;
   padding: 10px;
   display: flex;
   align-items: center;
   height: 100%;
+  flex-direction: column;
 }
 
-#loadContainer button{
+#saveContainer button{
   background-color: white;
   border: 0.1em lavender solid;
   border-radius: 10px;
   padding: 20px;
 }
 
-#closetContainer{
-  display: flex;
-  gap: 10px;
+#notLoggedInDiv {
+  
+}
+
+#loggedInDiv {
+  display: none;
 }
 
 /************************ LEFT PANEL ************************/

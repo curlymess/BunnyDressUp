@@ -10,7 +10,7 @@ export default class App {
     this._updateClothes = this._updateClothes.bind(this);
     this._updateExtra = this._updateExtra.bind(this);
 
-    this._loginUser = this._loginUser.bind(this); // TODO TO DO
+    this._onLogin = this._onLogin.bind(this); // TODO TO DO
 
     /// adds 'click' eventlistener to all elements w the css class
     document.addEventListener("click", (event) => {
@@ -64,9 +64,10 @@ export default class App {
     this.bunny.updateExtra(imgSrc);
   }
 
-  _loginUser() {
-
+  _onLogin( event ) {
+    event.preventDefault();
+    this.user = 0;
+    //await this._loadProfile();
   }
-
 }
 window.App = App;
