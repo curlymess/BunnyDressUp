@@ -1,13 +1,18 @@
 export default class Bunny {
   constructor() {
-    this.bg = "images/bg/bg0.png";
-    this.outfit = "images/outfit/o0.png";
-    this.extra = "images/extra/a0.png";
+    this.body = "images/bunny.png";
+    this.bg = "images/no.png";
+    this.outfit = "images/no.png";
+    this.extra = "images/no.png";
   }
 
-  updateBg(newItem) {
-    this.bg = newItem;
-  }
+  updateBg(event, bgSrc) {
+    console.log("clicked");
+      event.preventDefault();
+      var bgImg = document.getElementById("bgImg");
+      bgImg.src = bgSrc;
+      this.bg = bgSrc;
+    }
 
   updateOutfit(newItem) {
     this.outfit = newItem;
