@@ -1,7 +1,7 @@
 const CLOSET = {
   bg: {
     bgNone: "images/no.png",
-    bg0: "/images/bg/bg0.png",
+    bg0: "images/bg/bg0.png",
     bg1: "images/bg/bg1.png",
     bg2: "images/bg/bg2.png",
     bg3: "images/bg/bg3.png",
