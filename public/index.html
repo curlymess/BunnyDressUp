@@ -123,6 +123,11 @@
 
     function handleLogin(event){
       console.log("inside login");
+      document.getElementById("notLoggedInDiv").style.visibility = "hidden";
+      document.getElementById("notLoggedInDiv").style.display = "none";
+      document.getElementById("loggedInDiv").style.visibility = "visible";
+      document.getElementById("loggedInDiv").style.display = "block";
+      
     }
   </script>
 </body>

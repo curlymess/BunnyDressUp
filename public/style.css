@@ -101,11 +101,12 @@ h3 {
 }
 
 #notLoggedInDiv {
-  
+  visibility: visible;
 }
 
 #loggedInDiv {
   display: none;
+  visibility: hidden;
 }
 
 /************************ LEFT PANEL ************************/
