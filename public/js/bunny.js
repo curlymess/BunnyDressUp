@@ -8,16 +8,11 @@ export default class Bunny {
     this.extra = "images/no.png";
   }
 
-  // updateBg(event, bgSrc) {
-  //   console.log("clicked");
-  //     event.preventDefault();
-  //     var bgImg = document.getElementById("bgImg");
-  //     bgImg.src = CLOSET.bg.bgSrc;
-  //     this.bg = bgSrc;
-  //   }
-
-  updateOutfit(newItem) {
+  updateBg(newItem) {
     this.outfit = newItem;
+  }
+  updateClothes(newItem) {
+    this.clothes = newItem;
   }
 
   updateExtra(newItem) {
