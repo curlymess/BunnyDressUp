@@ -4,12 +4,17 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  margin: 0;
 }
 
 img {
   height: 100%;
   width: 100%;
   object-fit: contain;
+}
+
+button {
+  cursor: pointer;
 }
 
 h1 {
@@ -55,7 +60,7 @@ h3 {
 #bunnyContainer0{
   display: flex;
   position: relative;
-  height: 90%;
+  height: 80%;
 }
 #bunnyContainer1{
   position: relative;
@@ -89,8 +94,8 @@ h3 {
   padding: 10px;
   display: flex;
   align-items: center;
-  height: 100%;
   flex-direction: column;
+  flex:1;
 }
 
 #saveContainer button{
@@ -100,13 +105,23 @@ h3 {
   padding: 20px;
 }
 
-#notLoggedInDiv {
+/* #notLoggedInDiv {
   visibility: visible;
 }
 
 #loggedInDiv {
   display: none;
   visibility: hidden;
+} */
+
+/* Style buttons */
+.download {
+  font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.download:hover { 
+  background-color: pink;
 }
 
 /************************ LEFT PANEL ************************/
