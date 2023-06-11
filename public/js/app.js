@@ -79,18 +79,8 @@ export default class App {
   ///////////////// adapted from https://incoderweb.blogspot.com/2022/05/create-button-to-download-image.html
   downloadBunny(event) {
     event.preventDefault();
-    console.log("download bunny...");
 
-    // one img vrsn
-    // let imageURL = document.querySelector("#bunnyImg").src;
-    // let toDataResult = this.toDataURL(imageURL);
-    // this.downloadImg(toDataResult);
-
-    //let imageURL = mergeImages([document.querySelector("#bgImg").src, document.querySelector("#bunnyImg").src, document.querySelector("#outfitImg").src, document.querySelector("#extraImg").src]);
-    //console.log(imageURL);
-    //let toDataResult = this.toDataURL(imageURL);
-    //this.downloadImg(toDataResult);
-
+    // for merging img
     // https://www.tutorialspoint.com/combining-multiple-images-into-a-single-one-using-javascript
     let imageURL = document.querySelector("#bgImg");
     let imageURL0 = document.querySelector("#bgImg");
@@ -109,47 +99,12 @@ export default class App {
     context.drawImage(imageURL2, 0, 0);
     context.drawImage(imageURL3, 0, 0);
 
-
-    // let link = document.createElement("a");
-    // link.download = "bunny.png";
-    // link.href = canvas.toDataURL();
-    // link.click();
-
-    // let url = this.toDataURL(canvas);
-    // this.download(url);
     let image = canvas.toDataURL("image/png");
     let link = document.createElement("a");
     link.download = "bunny.png";
     link.href = image;
     link.click();
-
-    //this.download(image);
   }
-
-  // download(url) {
-  //   const link = document.createElement("a");
-  //   link.download = "bunny.png";
-  //   link.href = url;
-  //   link.click();
-  // }
-
-  // async toDataURL(url) {
-  //   return fetch(url).then((response) => {
-  //     return response.blob();
-  //   }).then((blob) => {
-  //     return URL.createObjectURL(blob);
-  //   });
-  // }
-
-  // async downloadImg(url) {
-  //   const a = document.createElement("a");
-  //   a.href = await url;
-  //   a.download = "Download.png";
-  //   document.body.append(a); // was appendChild but didnt like
-  //   a.click();
-  //   document.body.removeChild(a);
-  // }
-  /////////////////
 
   _updateBg(event, bgSrc) {
     event.preventDefault();
