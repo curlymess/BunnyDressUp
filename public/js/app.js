@@ -2,6 +2,9 @@ import Bunny from "./bunny.js";
 import User from "./user.js";
 import CLOSET from "./closet.js";
 
+// https://www.cssscript.com/merge-multiple-images-one-image/
+// import mergeImages from "merge-images";
+
 export default class App {
   constructor() {
     this.bunny = new Bunny();
@@ -15,6 +18,7 @@ export default class App {
 
     this.saveBunnyClick = this.saveBunnyClick.bind(this);
 
+    // this.download = this.download.bind(this);
     this.downloadBunny = this.downloadBunny.bind(this);
     document.querySelector(".downloadBttn").addEventListener("click", this.downloadBunny);
 
@@ -72,32 +76,80 @@ export default class App {
     }
   }
 
+  ///////////////// adapted from https://incoderweb.blogspot.com/2022/05/create-button-to-download-image.html
   downloadBunny(event) {
     event.preventDefault();
     console.log("download bunny...");
 
-    let imageURL = document.querySelector("#bunnyImg").src; // fix here
-    let toDataResult = this.toDataURL(imageURL);
-    this.downloadImg(toDataResult);
+    // one img vrsn
+    // let imageURL = document.querySelector("#bunnyImg").src;
+    // let toDataResult = this.toDataURL(imageURL);
+    // this.downloadImg(toDataResult);
+
+    //let imageURL = mergeImages([document.querySelector("#bgImg").src, document.querySelector("#bunnyImg").src, document.querySelector("#outfitImg").src, document.querySelector("#extraImg").src]);
+    //console.log(imageURL);
+    //let toDataResult = this.toDataURL(imageURL);
+    //this.downloadImg(toDataResult);
+
+    // https://www.tutorialspoint.com/combining-multiple-images-into-a-single-one-using-javascript
+    let imageURL = document.querySelector("#bgImg");
+    let imageURL0 = document.querySelector("#bgImg");
+    let imageURL1 = document.querySelector("#bunnyImg");
+    let imageURL2 = document.querySelector("#outfitImg");
+    let imageURL3 = document.querySelector("#extraImg");
+
+    let canvas = document.querySelector("#canvas");
+    let context = canvas.getContext("2d");
+
+    canvas.width = imageURL.naturalWidth;
+    canvas.height = imageURL.naturalHeight;
+    context.globalAlpha = 1;
+    context.drawImage(imageURL0, 0, 0);
+    context.drawImage(imageURL1, 0, 0);
+    context.drawImage(imageURL2, 0, 0);
+    context.drawImage(imageURL3, 0, 0);
+
+
+    // let link = document.createElement("a");
+    // link.download = "bunny.png";
+    // link.href = canvas.toDataURL();
+    // link.click();
+
+    // let url = this.toDataURL(canvas);
+    // this.download(url);
+    let image = canvas.toDataURL("image/png");
+    let link = document.createElement("a");
+    link.download = "bunny.png";
+    link.href = image;
+    link.click();
+
+    //this.download(image);
   }
 
-  // from https://incoderweb.blogspot.com/2022/05/create-button-to-download-image.html
-  toDataURL(url) {
-    return fetch(url).then((response) => {
-      return response.blob();
-    }).then((blob) => {
-      return URL.createObjectURL(blob);
-    });
-  }
+  // download(url) {
+  //   const link = document.createElement("a");
+  //   link.download = "bunny.png";
+  //   link.href = url;
+  //   link.click();
+  // }
 
-  async downloadImg(url) {
-    const a = document.createElement("a");
-    a.href = await url;
-    a.download = "Download.png";
-    document.body.append(a); // was appendChild but didnt like
-    a.click();
-    document.body.removeChild(a);
-  }
+  // async toDataURL(url) {
+  //   return fetch(url).then((response) => {
+  //     return response.blob();
+  //   }).then((blob) => {
+  //     return URL.createObjectURL(blob);
+  //   });
+  // }
+
+  // async downloadImg(url) {
+  //   const a = document.createElement("a");
+  //   a.href = await url;
+  //   a.download = "Download.png";
+  //   document.body.append(a); // was appendChild but didnt like
+  //   a.click();
+  //   document.body.removeChild(a);
+  // }
+  /////////////////
 
   _updateBg(event, bgSrc) {
     event.preventDefault();

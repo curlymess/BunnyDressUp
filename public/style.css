@@ -124,6 +124,11 @@ h3 {
   background-color: pink;
 }
 
+canvas {
+  visibility: hidden;
+  display: none;
+}
+
 /************************ LEFT PANEL ************************/
 /********** Grid Display Items ************/
 .myGallery {
