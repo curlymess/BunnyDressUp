@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Kranky&display=swap" rel="stylesheet">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <!-- This line provides automatic page and style reloading when files change -->
-  <!-- <script type="module" src="/lib/client/updater.js"></script> -->
+  <script type="module" src="/lib/client/updater.js"></script>
 
   <script type="module" src="js/index.js"></script>
 
@@ -85,7 +85,7 @@
       </div>
 
       <div id="saveContainer">
-        <div id="notLoggedInDiv">
+        <!-- <div id="notLoggedInDiv">
           <h3>Sign in to save your outfits!</h3>
           <div id="g_id_onload"
             data-client_id="297076872738-tpnj678k0m7690tqfu04n6pk75s3osrj.apps.googleusercontent.com"
@@ -94,12 +94,13 @@
           <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="signin_with"
             data-size="large" data-logo_alignment="left">
           </div>
-        </div>
+        </div> -->
         <div id="loggedInDiv">
-          <button>click here to save outfit</button>
-          <button>click here to save outfit</button>
-          <button>click here to save outfit</button>
+          <button class="saveBunnyBttn" id="saveBunnyBttn0">click here to save outfit</button>
+          <button class="saveBunnyBttn" id="saveBunnyBttn1">click here to save outfit</button>
+          <button class="saveBunnyBttn" id="saveBunnyBttn2">click here to save outfit</button>
         </div>
+        <button class="downloadBttn" style="width:100%">Download</button>
       </div>
     </div>
 

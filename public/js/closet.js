@@ -5,7 +5,7 @@ const CLOSET = {
     bg1: "images/bg/bg1.png",
     bg2: "images/bg/bg2.png",
     bg3: "images/bg/bg3.png",
-    bg4: "images/bg/bg4.png",
+    bg4: "images/bg/bg4.png"
   },
   clothes: {
     cNone: "images/no.png",
@@ -14,7 +14,7 @@ const CLOSET = {
     c2: "images/clothes/o2.png",
     c3: "images/clothes/o3.png",
     c4: "images/clothes/o4.png",
-    c5: "images/clothes/o5.png",
+    c5: "images/clothes/o5.png"
   },
   extra: {
     eNone: "images/no.png",
@@ -24,7 +24,7 @@ const CLOSET = {
     e3: "images/extra/a3.png",
     e4: "images/extra/a4.png",
     e5: "images/extra/a5.png",
-    e6: "images/extra/a6.png",
+    e6: "images/extra/a6.png"
   },
   none: "images/no.png",
   bunny: "images/bunny.png"

@@ -1,15 +1,15 @@
-import CLOSET from "./closet.js";
-
 export default class Bunny {
   constructor() {
     this.body = "images/bunny.png";
     this.bg = "images/no.png";
     this.clothes = "images/no.png";
     this.extra = "images/no.png";
+    this.user = null;
+    this.id = null;
   }
 
   updateBg(newItem) {
-    this.outfit = newItem;
+    this.bg = newItem;
   }
   updateClothes(newItem) {
     this.clothes = newItem;
@@ -17,6 +17,10 @@ export default class Bunny {
 
   updateExtra(newItem) {
     this.extra = newItem;
+  }
+
+  updateUser(userid) {
+    this.user = userid;
   }
 
   toString() {

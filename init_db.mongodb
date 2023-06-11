@@ -1,4 +1,7 @@
-// TODO: If you need to initialize your database with some documents, uncomment/adjust these lines and add insert statements.
-
-//db = connect(...);
-//db.dropDatabase();
+db = connect("cs193x_final");
+db.dropDatabase();
+db.users.insertOne({ id: "noor", savedBunnies: [] });
+db.bunnys.insertOne({ body: "images/bunny.png",
+    bg: "images/no.png",
+    clothes: "images/no.png",
+    extra: "images/no.png", user: "noor", id: 1 });
