@@ -76,12 +76,9 @@ export default class App {
     }
   }
 
-  ///////////////// adapted from https://incoderweb.blogspot.com/2022/05/create-button-to-download-image.html
-  downloadBunny(event) {
-    event.preventDefault();
-
-    // for merging img
-    // https://www.tutorialspoint.com/combining-multiple-images-into-a-single-one-using-javascript
+  // creating img
+  // https://www.tutorialspoint.com/combining-multiple-images-into-a-single-one-using-javascript
+  _mergeBunny() {
     let imageURL = document.querySelector("#bgImg");
     let imageURL0 = document.querySelector("#bgImg");
     let imageURL1 = document.querySelector("#bunnyImg");
@@ -98,7 +95,15 @@ export default class App {
     context.drawImage(imageURL1, 0, 0);
     context.drawImage(imageURL2, 0, 0);
     context.drawImage(imageURL3, 0, 0);
+  }
 
+  downloadBunny(event) {
+    event.preventDefault();
+
+    let canvas = document.querySelector("#canvas");
+    this._mergeBunny();
+
+    // download img
     let image = canvas.toDataURL("image/png");
     let link = document.createElement("a");
     link.download = "bunny.png";
