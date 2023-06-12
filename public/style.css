@@ -140,6 +140,12 @@ canvas {
 .myGallery img {
   width: 100%;
   overflow: hidden;
+  border-radius: 25px;
+}
+
+.myGallery button {
+  border: 0;
+  border-radius: 25px;
 }
 
 /********** Tab Display Items ************/
