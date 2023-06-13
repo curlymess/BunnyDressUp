@@ -71,6 +71,8 @@ export default class App {
 
     // data contains user email aka id - check if new user or old one to load savedBunnies
     this.user = await User.loadOrCreate(data.payload.email);
+    console.log("log in and check to see if bunnys load");
+    console.log(this.user);
 
     let resJson = await apiRequest("POST", `/login`, { idToken: idToken });
     API_KEY = resJson.apiKey;
@@ -94,13 +96,10 @@ export default class App {
     let data;
     this.bunny.updateUser(this.user.id);
     if (slotId === "saveBunnyBttn0") {
-      console.log("0");
       this.user.savedBunnies[0] = this.bunny;
       let slot0 = document.querySelector("#saveBunnyBttn0");
       slot0.innerHTML = "0";
       data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
-      console.log(data);
-      this.user.savedBunnies = data.savedBunnies;
     } else if (slotId === "saveBunnyBttn1") {
       this.user.savedBunnies[1] = this.bunny;
       let slot0 = document.querySelector("#saveBunnyBttn1");
@@ -114,7 +113,8 @@ export default class App {
     } else {
       console.log("ERROR SAVING BUNNY");
     }
-    console.log(this.user.savedBunnies);
+    this.user.savedBunnies = data.savedBunnies;
+    // console.log(this.user.savedBunnies);
   }
 
   // creating img

@@ -4,7 +4,7 @@ import Bunny from "./bunny.js";
 export default class User {
   constructor(data) {
     this.id = data.id;
-    this.savedBunnies = data.bunnies ? data.bunnies : [];
+    this.savedBunnies = data.savedBunnies ? data.savedBunnies : [];
   }
 
   /* Returns an array of user IDs. */
@@ -18,6 +18,8 @@ export default class User {
     let data;
     try {
       data = await apiRequest("GET", `/users/${id}`);
+      console.log("try data");
+      console.log(data);
     } catch (e) {
       console.log("User not found... now creating user");
       data = await apiRequest("POST", "/users", { id: id });
