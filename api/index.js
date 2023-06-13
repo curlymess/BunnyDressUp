@@ -7,7 +7,8 @@ import { MongoClient } from "mongodb";
 import jwt from "jsonwebtoken";
 import { OAuth2Client } from "google-auth-library";
 const CLIENT_ID = "297076872738-tpnj678k0m7690tqfu04n6pk75s3osrj.apps.googleusercontent.com";
-const JWT_SECRET = "x7GBEEkSv+gOuuE6u8H26v2aZE+//jznEHH85E7I2kg=";
+//const JWT_SECRET = "x7GBEEkSv+gOuuE6u8H26v2aZE+//jznEHH85E7I2kg=";
+const JWT_SECRET = process.env.JWT_SECRET || "fail";
 let DATABASE_NAME = "cs193x_final";
 
 const MONGODB_URL = process.env.MONGODB_URL || "mongodb://127.0.0.1";
@@ -21,7 +22,7 @@ const initApi = async (app) => {
   app.set("json spaces", 2);
   app.use("/api", api);
 
-  let conn = await MongoClient.connect("mongodb://127.0.0.1");
+  let conn = await MongoClient.connect(MONGODB_URL);
   let db = conn.db(DATABASE_NAME);
   Bunnys = db.collection("bunnys");
   Users = db.collection("users");
