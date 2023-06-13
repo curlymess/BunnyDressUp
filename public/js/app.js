@@ -8,7 +8,6 @@ import GoogleAuth from "./googleauth.js";
 // import mergeImages from "merge-images";
 
 let auth = null;
-let API_KEY = null;
 const CLIENT_ID = "297076872738-tpnj678k0m7690tqfu04n6pk75s3osrj.apps.googleusercontent.com";
 
 export default class App {
@@ -26,7 +25,7 @@ export default class App {
 
     // this.download = this.download.bind(this);
     this.downloadBunny = this.downloadBunny.bind(this);
-    document.querySelector(".downloadBttn").addEventListener("click", this.downloadBunny);
+    document.querySelector("#downloadBttn").addEventListener("click", this.downloadBunny);
 
     document.addEventListener("click", (event) => {
       if (event.target.classList.contains("saveBunnyBttn")) {
@@ -53,6 +52,7 @@ export default class App {
       }
     });
 
+    this.API_KEY = null;
     auth = new GoogleAuth(CLIENT_ID); // only ONE googleauth per app
     auth.render(document.querySelector("#loginForm"), this._onLogin);
   }
@@ -62,11 +62,9 @@ export default class App {
     document.querySelector("#notLoggedInDiv").style.visibility = "hidden";
     document.querySelector("#notLoggedInDiv").style.display = "none";
     document.querySelector("#loggedInDiv").style.visibility = "visible";
-    document.querySelector("#loggedInDiv").style.display = "block";
-    document.querySelector("#loginForm").style.display = "none";
+    document.querySelector("#loggedInDiv").style.display = "flex";
 
     let data = await auth.verifyIdToken(idToken);
-    // console.log(data);
     console.log(data.payload.email);
 
     // data contains user email aka id - check if new user or old one to load savedBunnies
@@ -76,15 +74,18 @@ export default class App {
       console.log("SHOW BUNNIES");
       if (this.user.savedBunnies[0]) {
         document.querySelector("#saveBunnyBttn0").innerHTML = "outfit #1";
+        document.querySelector("#deleteBunnyBttn0").style.visibility = "visible";
       } else if (this.user.savedBunnies[1]) {
         document.querySelector("#saveBunnyBttn1").innerHTML = "outfit #2";
+        document.querySelector("#deleteBunnyBttn1").style.visibility = "visible";
       } else {
         document.querySelector("#saveBunnyBttn2").innerHTML = "outfit #3";
+        document.querySelector("#deleteBunnyBttn2").style.visibility = "visible";
       }
     }
 
     let resJson = await apiRequest("POST", `/login`, { idToken: idToken });
-    API_KEY = resJson.apiKey;
+    this.API_KEY = resJson.apiKey;
   };
 
   loadData(data) {
@@ -123,7 +124,6 @@ export default class App {
       console.log("ERROR SAVING BUNNY");
     }
     this.user.savedBunnies = data.savedBunnies;
-    // console.log(this.user.savedBunnies);
   }
 
   // creating img
@@ -182,11 +182,5 @@ export default class App {
     imgElem.src = CLOSET.extra[imgSrc];
     this.bunny.updateExtra(CLOSET.extra[imgSrc]);
   }
-
-  // _onLogin(event) {
-  //   event.preventDefault();
-  //   this.user = new User({ id: "tester", savedBunnies: [] });
-  //   //await this._loadProfile();
-  // }
 }
 window.App = App;

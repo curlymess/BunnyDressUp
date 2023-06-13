@@ -22,9 +22,9 @@ export default class GoogleAuth {
      callback is a function to call when login is successful. It is passed the ID token as argument.
      opts are options to pass to renderButton. Defaults to { theme: "outline" } */
   render(parent, callback, opts) {
-    if (!opts) opts = { theme: "outline" };
+    if (!opts) opts = { theme: "outline", shape: "circle" };
     this._callback = callback;
-    google.accounts.id.renderButton(parent, opts);
+    google.accounts.id.renderButton(parent, opts );
   }
 
   /* Verify that an I token passed to the callback is valid.

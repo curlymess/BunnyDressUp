@@ -51,7 +51,7 @@ api.post("/login", async (req, res) => {
 
   /* data contains information about the logged in user. */
   let id = data.email;
-  let name = data.name;
+  //let name = data.name;
   //TODO: Do whatever work you'd like here, such as ensuring the user exists in the database
   /* You can include additional information in the key if you want, as well. */
 
@@ -132,9 +132,8 @@ api.patch("/users/:id/savedBunnys", async (req, res) => {
     user.savedBunnies[1] = req.body.savedBunnies[1];
     user.savedBunnies[2] = req.body.savedBunnies[2];
   }
-  console.log("rhg");
-  console.log(req.body.savedBunnies);
   let { id, savedBunnies } = user;
+  console.log(id);
   await Users.replaceOne({ id: user.id }, user);
   res.json({
     savedBunnies

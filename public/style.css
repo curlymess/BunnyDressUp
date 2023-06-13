@@ -32,7 +32,8 @@ h3 {
   gap: 1em;
   min-height: 0;
 }
-.infoContainer{
+
+.infoContainer {
   display: flex;
   justify-content: center;
 }
@@ -57,12 +58,13 @@ h3 {
 }
 
 /********** Bunny Display ************/
-#bunnyContainer0{
+#bunnyContainer0 {
   display: flex;
   position: relative;
   height: 80%;
 }
-#bunnyContainer1{
+
+#bunnyContainer1 {
   position: relative;
 }
 
@@ -71,16 +73,19 @@ h3 {
   top: 0;
   left: 0;
 }
+
 #bunnyImg {
   position: absolute;
   top: 0;
   left: 0;
 }
+
 #outfitImg {
   position: absolute;
   top: 0;
   left: 0;
 }
+
 #extraImg {
   position: absolute;
   top: 0;
@@ -95,33 +100,87 @@ h3 {
   display: flex;
   align-items: center;
   flex-direction: column;
-  flex:1;
-}
-
-#saveContainer button{
-  background-color: white;
-  border: 0.1em lavender solid;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-#notLoggedInDiv {
-  visibility: visible;
+  flex: 1;
 }
 
 #loggedInDiv {
   display: none;
   visibility: hidden;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
-/* Style buttons */
-.download {
-  font-size: 20px;
+#loggedInDiv div {
+  background-color: white;
+  border: 0.1em lavender solid;
+  border-radius: 10px;
+  padding: 10px;
+  flex-direction: column;
+  display: flex;
+  padding-bottom: 1em;
+  margin-bottom: 0.1em;
+  flex: 1;
 }
 
-/* Darker background on mouse-over */
-.download:hover { 
-  background-color: pink;
+#loggedInDiv button {
+  border: 0;
+  background-color: white;
+}
+
+.deleteBunnyBttn:hover {
+  color: pink;
+}
+
+.deleteBunnyBttn {
+  align-self: flex-start;
+  padding: 0.01em;
+}
+
+#deleteBunnyBttn0 {
+  visibility: hidden;
+}
+
+#deleteBunnyBttn1 {
+  visibility: hidden;
+}
+
+#deleteBunnyBttn2 {
+  visibility: hidden;
+}
+
+#notLoggedInDiv {
+  visibility: visible;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+#notLoggedInDiv h2{
+  flex: 1;
+}
+
+#loginForm {
+  width: 100%;
+  flex: 3;
+}
+
+#signin{
+  width: 100%;
+}
+
+#downloadBttn {
+  font-size: 1em;
+  width: 100%;
+  background-color: white;
+  border: 0.1em lavender solid;
+  border-radius: 10px;
+  padding: 0.5em;
+}
+
+#downloadBttn:hover {
+  color: pink;
 }
 
 canvas {
