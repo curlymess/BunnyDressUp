@@ -22,6 +22,7 @@ export default class App {
     this._onLogin = this._onLogin.bind(this); // TODO TO DO
 
     this.saveBunnyClick = this.saveBunnyClick.bind(this);
+    this.deleteBunnyClick = this.deleteBunnyClick.bind(this);
 
     // this.download = this.download.bind(this);
     this.downloadBunny = this.downloadBunny.bind(this);
@@ -29,7 +30,13 @@ export default class App {
 
     document.addEventListener("click", (event) => {
       if (event.target.classList.contains("saveBunnyBttn")) {
-        this.saveBunnyClick(event, event.target.getAttribute("id"));
+        this.saveBunnyClick(event, event.target.getAttribute("id"), Number(event.target.getAttribute("id").slice(-1)));
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("deleteBunnyBttn")) {
+        this.deleteBunnyClick(event, event.target.getAttribute("id"), Number(event.target.getAttribute("id").slice(-1)));
       }
     });
 
@@ -70,20 +77,22 @@ export default class App {
     // data contains user email aka id - check if new user or old one to load savedBunnies
     this.user = await User.loadOrCreate(data.payload.email);
     this.user.id = data.payload.email;
+    console.log("onlogin user");
+    console.log(this.user);
     if (this.user.savedBunnies.length !== 0) {
-      console.log("SHOW BUNNIES");
       if (this.user.savedBunnies[0]) {
         document.querySelector("#saveBunnyBttn0").innerHTML = "outfit #1";
         document.querySelector("#deleteBunnyBttn0").style.visibility = "visible";
-      } else if (this.user.savedBunnies[1]) {
+      }
+      if (this.user.savedBunnies[1]) {
         document.querySelector("#saveBunnyBttn1").innerHTML = "outfit #2";
         document.querySelector("#deleteBunnyBttn1").style.visibility = "visible";
-      } else {
+      }
+      if (this.user.savedBunnies[2]) {
         document.querySelector("#saveBunnyBttn2").innerHTML = "outfit #3";
         document.querySelector("#deleteBunnyBttn2").style.visibility = "visible";
       }
     }
-
     let resJson = await apiRequest("POST", `/login`, { idToken: idToken });
     this.API_KEY = resJson.apiKey;
   };
@@ -101,29 +110,34 @@ export default class App {
 
   async saveBunnyClick(event, slotId, slotNum) {
     event.preventDefault();
-    console.log(slotId);
-
     let data;
-    this.bunny.updateUser(this.user.id);
-    if (slotId === "saveBunnyBttn0") {
-      this.user.savedBunnies[0] = this.bunny;
-      let slot = document.querySelector("#"+slotId);
-      slot.innerHTML = "outfit #1";
+    let innerTxt = document.querySelector("#" + slotId).innerHTML;
+    if (innerTxt === "save outfit") {
+      //this.bunny.updateUser(this.user.id);
+      this.bunny.user = this.user.id;
+      this.user.savedBunnies[slotNum] = this.bunny;
+      document.querySelector("#" + slotId).innerHTML = "outfit #" + (slotNum + 1);
+      document.querySelector("#deleteBunnyBttn" + (slotNum)).style.visibility = "visible";
+
       data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
-    } else if (slotId === "saveBunnyBttn1") {
-      this.user.savedBunnies[1] = this.bunny;
-      let slot = document.querySelector("#"+slotId);
-      slot.innerHTML = "outfit #2";
-      data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
-    } else if (slotId === "saveBunnyBttn2") {
-      this.user.savedBunnies[2] = this.bunny;
-      let slot = document.querySelector("#saveBunnyBttn2");
-      slot.innerHTML = "outfit #3";
-      data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
-    } else {
-      console.log("ERROR SAVING BUNNY");
+      this.user.savedBunnies = data.savedBunnies;
+    } else { // load outfit
+      console.log("load bunny" + slotNum);
+      this.bunny = this.user.savedBunnies[slotNum];
+
+      this._updateBg(event, this.bunny.bg);
+      this._updateClothes(event, this.bunny.clothes);
+      this._updateExtra(event, this.bunny.extra);
     }
-    this.user.savedBunnies = data.savedBunnies;
+  }
+
+  async deleteBunnyClick(event, slotId, slotNum) {
+    event.preventDefault();
+    this.user.savedBunnies[slotNum] = null;
+    document.querySelector("#" + slotId).style.visibility = "hidden";
+    document.querySelector("#saveBunnyBttn" + (slotNum)).innerHTML = "save outfit";
+
+    await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
   }
 
   // creating img
@@ -149,7 +163,6 @@ export default class App {
 
   downloadBunny(event) {
     event.preventDefault();
-
     let canvas = document.querySelector("#canvas");
     this._mergeBunny();
 
@@ -165,22 +178,24 @@ export default class App {
     event.preventDefault();
     let bgImg = document.querySelector("#bgImg");
     bgImg.src = CLOSET.bg[bgSrc];
-    this.bunny.updateBg(CLOSET.bg[bgSrc]);
-    console.log(CLOSET.bg[bgSrc]);
+    //this.bunny.updateBg(bgSrc);
+    this.bunny.bg= bgSrc;
   }
 
   _updateClothes(event, imgSrc) {
     event.preventDefault();
     let imgElem = document.querySelector("#outfitImg");
     imgElem.src = CLOSET.clothes[imgSrc];
-    this.bunny.updateClothes(CLOSET.clothes[imgSrc]);
+    // this.bunny.updateClothes(imgSrc);
+    this.bunny.clothes = imgSrc;
   }
 
   _updateExtra(event, imgSrc) {
     event.preventDefault();
     let imgElem = document.querySelector("#extraImg");
     imgElem.src = CLOSET.extra[imgSrc];
-    this.bunny.updateExtra(CLOSET.extra[imgSrc]);
+    // this.bunny.updateExtra(imgSrc);
+    this.bunny.extra = imgSrc;
   }
 }
 window.App = App;

@@ -1,9 +1,9 @@
 export default class Bunny {
   constructor() {
-    this.body = "images/bunny.png";
-    this.bg = "images/no.png";
-    this.clothes = "images/no.png";
-    this.extra = "images/no.png";
+    // this.body = "images/bunny.png";
+    this.bg = "bgNone";
+    this.clothes = "cNone";
+    this.extra = "eNone";
     this.user = null;
   }
 
