@@ -10,6 +10,8 @@ const CLIENT_ID = "297076872738-tpnj678k0m7690tqfu04n6pk75s3osrj.apps.googleuser
 const JWT_SECRET = "x7GBEEkSv+gOuuE6u8H26v2aZE+//jznEHH85E7I2kg=";
 let DATABASE_NAME = "cs193x_final";
 
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb://127.0.0.1";
+
 let api = express.Router();
 let Bunnys;
 let Users;
