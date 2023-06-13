@@ -2,8 +2,14 @@ import Bunny from "./bunny.js";
 import User from "./user.js";
 import CLOSET from "./closet.js";
 
+import apiRequest from "./apirequest.js";
+import GoogleAuth from "./googleauth.js";
 // https://www.cssscript.com/merge-multiple-images-one-image/
 // import mergeImages from "merge-images";
+
+let auth = null;
+let API_KEY = null;
+const CLIENT_ID = "297076872738-tpnj678k0m7690tqfu04n6pk75s3osrj.apps.googleusercontent.com";
 
 export default class App {
   constructor() {
@@ -46,7 +52,29 @@ export default class App {
         this._updateExtra(event, event.target.getAttribute("id"));
       }
     });
+
+    auth = new GoogleAuth(CLIENT_ID); // only ONE googleauth per app
+    auth.render(document.querySelector("#loginForm"), this._onLogin);
   }
+
+  async _onLogin(idToken) {
+    console.log("inside login");
+    document.querySelector("#notLoggedInDiv").style.visibility = "hidden";
+    document.querySelector("#notLoggedInDiv").style.display = "none";
+    document.querySelector("#loggedInDiv").style.visibility = "visible";
+    document.querySelector("#loggedInDiv").style.display = "block";
+    document.querySelector("#loginForm").style.display = "none";
+
+    let data = await auth.verifyIdToken(idToken);
+    // console.log(data);
+    console.log(data.payload.email);
+
+    // data contains user email aka id - check if new user or old one to load savedBunnies
+    this.user = await User.loadOrCreate(data.payload.email);
+
+    let resJson = await apiRequest("POST", `/login`, { idToken: idToken });
+    API_KEY = resJson.apiKey;
+  };
 
   loadData(data) {
     // reset
@@ -60,20 +88,32 @@ export default class App {
     this.user = new User({ id: "tester1", savedBunnies: [] });
   }
 
-  saveBunnyClick(event, slotId) {
+  async saveBunnyClick(event, slotId) {
     event.preventDefault();
     console.log(slotId);
+    let data;
     //this.bunny.updateUser(this.user);
     if (slotId === "saveBunnyBttn0") {
-      console.log("1");
+      console.log("0");
       this.user.savedBunnies[0] = this.bunny;
+      let slot0 = document.querySelector("#saveBunnyBttn0");
+      slot0.innerHTML = "0";
+      data = await apiRequest("PATCH", `/users/${this.id}`, { savedBunnies: this.savedBunnies });
     } else if (slotId === "saveBunnyBttn1") {
       this.user.savedBunnies[1] = this.bunny;
+      let slot0 = document.querySelector("#saveBunnyBttn1");
+      slot0.innerHTML = "1";
+      data = await apiRequest("PATCH", `/users/${this.id}`, { savedBunnies: this.savedBunnies });
     } else if (slotId === "saveBunnyBttn2") {
       this.user.savedBunnies[2] = this.bunny;
+      let slot0 = document.querySelector("#saveBunnyBttn2");
+      slot0.innerHTML = "2";
+      data = await apiRequest("PATCH", `/users/${this.id}`, { savedBunnies: this.savedBunnies });
     } else {
       console.log("ERROR SAVING BUNNY");
     }
+    console.log(this.user.savedBunnies);
+    return data;
   }
 
   // creating img
@@ -133,10 +173,10 @@ export default class App {
     this.bunny.updateExtra(CLOSET.extra[imgSrc]);
   }
 
-  _onLogin(event) {
-    event.preventDefault();
-    this.user = new User({ id: "tester", savedBunnies: [] });
-    //await this._loadProfile();
-  }
+  // _onLogin(event) {
+  //   event.preventDefault();
+  //   this.user = new User({ id: "tester", savedBunnies: [] });
+  //   //await this._loadProfile();
+  // }
 }
 window.App = App;

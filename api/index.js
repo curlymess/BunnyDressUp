@@ -3,6 +3,11 @@ import cors from "cors";
 import express from "express";
 import { MongoClient } from "mongodb";
 
+// google log in
+import jwt from "jsonwebtoken";
+import { OAuth2Client } from "google-auth-library";
+const CLIENT_ID = "297076872738-tpnj678k0m7690tqfu04n6pk75s3osrj.apps.googleusercontent.com";
+const JWT_SECRET = "x7GBEEkSv+gOuuE6u8H26v2aZE+//jznEHH85E7I2kg=";
 let DATABASE_NAME = "cs193x_final";
 
 let api = express.Router();
@@ -28,6 +33,56 @@ api.get("/", (req, res) => {
   res.json({ message: "Hello, world!" });
 });
 
+// google login endpoints
+api.post("/login", async (req, res) => {
+  let idToken = req.body.idToken;
+  let client = new OAuth2Client();
+  let data;
+  try {
+    /* "audience" is the client ID the token was created for. A mismatch would mean the user is
+       trying to use an ID token from a different app */
+    let login = await client.verifyIdToken({ idToken, audience: CLIENT_ID });
+    data = login.getPayload();
+  } catch (e) {
+    /* Something when wrong when verifying the token. */
+    console.error(e);
+    res.status(403).json({ error: "Invalid ID token" });
+  }
+
+  /* data contains information about the logged in user. */
+  let id = data.email;
+  let name = data.name;
+  //TODO: Do whatever work you'd like here, such as ensuring the user exists in the database
+  /* You can include additional information in the key if you want, as well. */
+
+  /* */
+  let apiKey = jwt.sign({ id }, JWT_SECRET, { expiresIn: "1d" });
+  res.json({ apiKey });
+});
+
+api.use("/protected", async (req, res, next) => {
+  /* Return an authentication error. */
+  const error = () => {
+    res.status(403).json({ error: "Access denied" });
+  };
+  let header = req.header("Authorization");
+  /* `return error()` is a bit cheesy when error() doesn't return anything, but it works (returns undefined) and is convenient. */
+  if (!header) return error();
+  let [type, value] = header.split(" ");
+  if (type !== "Bearer") return error();
+  try {
+    let verified = jwt.verify(value, SECRET);
+    console.log("verified is");
+    console.log(verified);
+    //TODO: verified contains whatever object you signed, e.g. the user's email address.
+    //Use this to look up the user and set res.locals accordingly
+    next();
+  } catch (e) {
+    console.error(e);
+    error();
+  }
+});
+
 // endpoints
 api.get("/users", async (req, res) => {
   let users = await Users.find().toArray();
@@ -49,13 +104,11 @@ api.use("/users/:id", async (req, res, next) => {
 
 api.get("/users/:id", async (req, res) => {
   let user = res.locals.user;
-  let { id, name, avatarURL, following } = user;
+  let { id, savedBunnies } = user;
 
   res.json({
     id,
-    name,
-    avatarURL,
-    following
+    savedBunnies
   });
 });
 
@@ -63,16 +116,12 @@ api.get("/users/:id", async (req, res) => {
 api.post("/users", async (req, res) => {
   await Users.insertOne({
     id: req.body.id,
-    name: req.body.id,
-    avatarURL: "",
-    following: []
+    savedBunnies: []
   });
-  let { id, name, avatarURL, following } = await Users.findOne(req.body.id);
+  let { id, savedBunnies } = await Users.findOne(req.body.id);
   res.json({
     id,
-    name,
-    avatarURL,
-    following
+    savedBunnies
   });
 });
 

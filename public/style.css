@@ -105,14 +105,14 @@ h3 {
   padding: 20px;
 }
 
-/* #notLoggedInDiv {
+#notLoggedInDiv {
   visibility: visible;
 }
 
 #loggedInDiv {
   display: none;
   visibility: hidden;
-} */
+}
 
 /* Style buttons */
 .download {

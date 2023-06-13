@@ -13,6 +13,7 @@
   <script type="module" src="/lib/client/updater.js"></script>
 
   <script type="module" src="js/index.js"></script>
+  <script type="module" src="js/app.js"></script>
 
 </head>
 
@@ -85,20 +86,17 @@
       </div>
 
       <div id="saveContainer">
-        <!-- <div id="notLoggedInDiv">
+        <div id="notLoggedInDiv">
           <h3>Sign in to save your outfits!</h3>
-          <div id="g_id_onload"
-            data-client_id="297076872738-tpnj678k0m7690tqfu04n6pk75s3osrj.apps.googleusercontent.com"
-            data-context="signin" data-ux_mode="popup" data-callback="handleLogin" data-auto_prompt="false">
-          </div>
-          <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="signin_with"
-            data-size="large" data-logo_alignment="left">
-          </div>
-        </div> -->
+
+          <form id="loginForm">
+            <div id="signin"></div>
+          </form>
+        </div>
         <div id="loggedInDiv">
-          <button class="saveBunnyBttn" id="saveBunnyBttn0">click here to save outfit</button>
-          <button class="saveBunnyBttn" id="saveBunnyBttn1">click here to save outfit</button>
-          <button class="saveBunnyBttn" id="saveBunnyBttn2">click here to save outfit</button>
+          <button class="saveBunnyBttn" id="saveBunnyBttn0">save outfit</button>
+          <button class="saveBunnyBttn" id="saveBunnyBttn1">save outfit</button>
+          <button class="saveBunnyBttn" id="saveBunnyBttn2">save outfit</button>
         </div>
         <button class="downloadBttn" style="width:100%">Download</button>
       </div>
@@ -120,15 +118,6 @@
       }
       document.getElementById(cityName).style.display = "block";
       evt.currentTarget.className += " active";
-    }
-
-    function handleLogin(event){
-      console.log("inside login");
-      document.getElementById("notLoggedInDiv").style.visibility = "hidden";
-      document.getElementById("notLoggedInDiv").style.display = "none";
-      document.getElementById("loggedInDiv").style.visibility = "visible";
-      document.getElementById("loggedInDiv").style.display = "block";
-      
     }
   </script>
 </body>
