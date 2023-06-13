@@ -188,7 +188,3 @@ export default class App {
 }
 window.App = App;
 
-window.onresize = (() => {
-  let imgSize = document.querySelector("#bunnyImg").style.width;
-  document.querySelector("#saveContainer").style.width = imgSize;
-});
