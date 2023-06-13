@@ -112,13 +112,13 @@ api.get("/users/:id", async (req, res) => {
   });
 });
 
-// creates the user and puts it in the database but it crashes
 api.post("/users", async (req, res) => {
   await Users.insertOne({
     id: req.body.id,
     savedBunnies: []
   });
-  let { id, savedBunnies } = await Users.findOne(req.body.id);
+  let id = req.body.id;
+  let savedBunnies = [];
   res.json({
     id,
     savedBunnies

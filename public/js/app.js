@@ -71,8 +71,17 @@ export default class App {
 
     // data contains user email aka id - check if new user or old one to load savedBunnies
     this.user = await User.loadOrCreate(data.payload.email);
-    console.log("log in and check to see if bunnys load");
-    console.log(this.user);
+    this.user.id = data.payload.email;
+    if (this.user.savedBunnies.length !== 0) {
+      console.log("SHOW BUNNIES");
+      if (this.user.savedBunnies[0]) {
+        document.querySelector("#saveBunnyBttn0").innerHTML = "outfit #1";
+      } else if (this.user.savedBunnies[1]) {
+        document.querySelector("#saveBunnyBttn1").innerHTML = "outfit #2";
+      } else {
+        document.querySelector("#saveBunnyBttn2").innerHTML = "outfit #3";
+      }
+    }
 
     let resJson = await apiRequest("POST", `/login`, { idToken: idToken });
     API_KEY = resJson.apiKey;
@@ -89,7 +98,7 @@ export default class App {
     // this.user = null; // not signed in yet ?
   }
 
-  async saveBunnyClick(event, slotId) {
+  async saveBunnyClick(event, slotId, slotNum) {
     event.preventDefault();
     console.log(slotId);
 
@@ -97,18 +106,18 @@ export default class App {
     this.bunny.updateUser(this.user.id);
     if (slotId === "saveBunnyBttn0") {
       this.user.savedBunnies[0] = this.bunny;
-      let slot0 = document.querySelector("#saveBunnyBttn0");
-      slot0.innerHTML = "0";
+      let slot = document.querySelector("#"+slotId);
+      slot.innerHTML = "outfit #1";
       data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
     } else if (slotId === "saveBunnyBttn1") {
       this.user.savedBunnies[1] = this.bunny;
-      let slot0 = document.querySelector("#saveBunnyBttn1");
-      slot0.innerHTML = "1";
+      let slot = document.querySelector("#"+slotId);
+      slot.innerHTML = "outfit #2";
       data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
     } else if (slotId === "saveBunnyBttn2") {
       this.user.savedBunnies[2] = this.bunny;
-      let slot0 = document.querySelector("#saveBunnyBttn2");
-      slot0.innerHTML = "2";
+      let slot = document.querySelector("#saveBunnyBttn2");
+      slot.innerHTML = "outfit #3";
       data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
     } else {
       console.log("ERROR SAVING BUNNY");

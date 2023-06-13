@@ -18,8 +18,6 @@ export default class User {
     let data;
     try {
       data = await apiRequest("GET", `/users/${id}`);
-      console.log("try data");
-      console.log(data);
     } catch (e) {
       console.log("User not found... now creating user");
       data = await apiRequest("POST", "/users", { id: id });
