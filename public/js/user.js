@@ -40,7 +40,7 @@ export default class User {
   }
 
   /* Create a new bunny with the given stuff. */
-  async makePost(text) {
+  async postBunny(text) {
     let data = await apiRequest("POST", `/users/${this.id}/posts`, { text: text });
     return data;
   }

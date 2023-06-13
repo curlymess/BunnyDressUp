@@ -125,21 +125,19 @@ api.post("/users", async (req, res) => {
   });
 });
 
-api.patch("/users/:id", async (req, res) => {
+api.patch("/users/:id/savedBunnys", async (req, res) => {
   let user = res.locals.user;
-  if (req.body.name) {
-    user.name = req.body.name;
+  if (req.body.savedBunnies) {
+    user.savedBunnies[0] = req.body.savedBunnies[0];
+    user.savedBunnies[1] = req.body.savedBunnies[1];
+    user.savedBunnies[2] = req.body.savedBunnies[2];
   }
-  if (req.body.avatarURL) {
-    user.avatarURL = req.body.avatarURL;
-  }
-  let { id, name, avatarURL, following } = user;
+  console.log("rhg");
+  console.log(req.body.savedBunnies);
+  let { id, savedBunnies } = user;
   await Users.replaceOne({ id: user.id }, user);
   res.json({
-    id,
-    name,
-    avatarURL,
-    following
+    savedBunnies
   });
 });
 

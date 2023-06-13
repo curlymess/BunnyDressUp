@@ -5,7 +5,6 @@ export default class Bunny {
     this.clothes = "images/no.png";
     this.extra = "images/no.png";
     this.user = null;
-    this.id = null;
   }
 
   updateBg(newItem) {

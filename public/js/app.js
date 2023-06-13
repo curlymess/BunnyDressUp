@@ -85,35 +85,36 @@ export default class App {
     this.bunny = new Bunny(); // start w clean bunny
     this.closet = data;
     // this.user = null; // not signed in yet ?
-    this.user = new User({ id: "tester1", savedBunnies: [] });
   }
 
   async saveBunnyClick(event, slotId) {
     event.preventDefault();
     console.log(slotId);
+
     let data;
-    //this.bunny.updateUser(this.user);
+    this.bunny.updateUser(this.user.id);
     if (slotId === "saveBunnyBttn0") {
       console.log("0");
       this.user.savedBunnies[0] = this.bunny;
       let slot0 = document.querySelector("#saveBunnyBttn0");
       slot0.innerHTML = "0";
-      data = await apiRequest("PATCH", `/users/${this.id}`, { savedBunnies: this.savedBunnies });
+      data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
+      console.log(data);
+      this.user.savedBunnies = data.savedBunnies;
     } else if (slotId === "saveBunnyBttn1") {
       this.user.savedBunnies[1] = this.bunny;
       let slot0 = document.querySelector("#saveBunnyBttn1");
       slot0.innerHTML = "1";
-      data = await apiRequest("PATCH", `/users/${this.id}`, { savedBunnies: this.savedBunnies });
+      data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
     } else if (slotId === "saveBunnyBttn2") {
       this.user.savedBunnies[2] = this.bunny;
       let slot0 = document.querySelector("#saveBunnyBttn2");
       slot0.innerHTML = "2";
-      data = await apiRequest("PATCH", `/users/${this.id}`, { savedBunnies: this.savedBunnies });
+      data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
     } else {
       console.log("ERROR SAVING BUNNY");
     }
     console.log(this.user.savedBunnies);
-    return data;
   }
 
   // creating img
