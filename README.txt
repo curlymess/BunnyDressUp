@@ -1,28 +1,31 @@
 CS193X Final Project
 ====================
 
-Project Title: <TODO>
-Your Name: <TODO>
-Your SUNetID: <TODO: the part of your email before the @, not the number>
+Project Title: Bunny Dress-Up
+Your Name: Noor Fakih
+Your SUNetID: nfakih
 
 Overview
 --------
-<TODO: A short description of your project and what it does.>
+My project features a bunny character you can dress up! You can log in with Google and save up to 3 outfits at a time. You an also download any image you make.
 
 Running
 -------
-<TODO: In general, we should be able to `npm install` and `npm start` your project. If there is anything else we need to know about running your project, please let us know here.>
+npm install
+npm start
 
-Do we need to load data from init_db.mongodb? <TODO: Yes/No>
+Do we need to load data from init_db.mongodb? No
 
 Features
 --------
-<TODO: This doesn't have to be a comprehensive list. But if there's anything we should definitely try or might miss, this is a good place to let us know about that.>
+- dress up bunny with backgrounds, outfits and accessories.
+- download any image generated
+- log in with Google and save up to 3 outfits
 
 Collaboration and libraries
 ---------------------------
-<TODO: Identify any sources you have consulted or libraries/external code you used. If your project overlaps with another project or coursework for another class, please describe the overlap and the parts specific to you/193X here.>
+- Google Sign in 
 
 Anything else?
 -------------
-<TODO: Anything else you'd like the teaching staff to know? How was the course overall?>
+Thank you! I really enjoyed the course <3
