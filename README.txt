@@ -29,3 +29,5 @@ Collaboration and libraries
 Anything else?
 -------------
 Thank you! I really enjoyed the course <3
+vercel deployment: https://193x-dress-up.vercel.app/#
+I was unable to get the google sign in to work on vercel - i would appreciate feedback on how to fix that if possible!
