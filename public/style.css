@@ -28,16 +28,16 @@ h3 {
 
 .gameContainer {
   display: flex;
-  padding: 1em;
-  gap: 1em;
+  padding: 0.5em;
+  gap: 0.1em;
   min-height: 0;
+  align-content: center;
 }
 
 .infoContainer {
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
-
+/************************ LEFT PANEL ************************/
 .leftHalf {
   background-color: #FDDDE6;
   border: 0em dotted #ccc;
@@ -45,7 +45,6 @@ h3 {
   flex: 1;
   overflow-y: auto;
   height: 100%;
-
 }
 
 /************************ RIGHT PANEL ************************/
@@ -62,6 +61,10 @@ h3 {
   display: flex;
   position: relative;
   height: 80%;
+}
+
+#bunnyContainer0 div {
+  display: flex;
 }
 
 #bunnyContainer1 {
@@ -96,11 +99,9 @@ h3 {
 #saveContainer {
   background-color: #FDDDE6;
   border-radius: 25px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  flex: 1;
+  padding: 20px;
+  width: fit-content;
+  align-self: center;
 }
 
 #loggedInDiv {
@@ -109,7 +110,6 @@ h3 {
   flex-wrap: nowrap;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
 }
 
 #loggedInDiv div {
@@ -154,20 +154,6 @@ h3 {
   visibility: visible;
   display: flex;
   flex-direction: row;
-  width: 100%;
-}
-
-#notLoggedInDiv h2{
-  flex: 1;
-}
-
-#loginForm {
-  width: 100%;
-  flex: 3;
-}
-
-#signin{
-  width: 100%;
 }
 
 #downloadBttn {

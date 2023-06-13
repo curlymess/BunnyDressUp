@@ -32,7 +32,7 @@ export default class User {
   }
 
   /* Gets the user's current bunnies. Returns an Array of Bunny objects. */
-  async getFeed() {
+  async getBunnys() {
     let data = await apiRequest("GET", `/users/${this.id}/savedBunnies`);
     return data.savedBunnies.map((b) => {
       return new Bunny(b);

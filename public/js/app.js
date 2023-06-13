@@ -1,11 +1,8 @@
 import Bunny from "./bunny.js";
 import User from "./user.js";
 import CLOSET from "./closet.js";
-
 import apiRequest from "./apirequest.js";
 import GoogleAuth from "./googleauth.js";
-// https://www.cssscript.com/merge-multiple-images-one-image/
-// import mergeImages from "merge-images";
 
 let auth = null;
 const CLIENT_ID = "297076872738-tpnj678k0m7690tqfu04n6pk75s3osrj.apps.googleusercontent.com";
@@ -19,12 +16,11 @@ export default class App {
     this._updateClothes = this._updateClothes.bind(this);
     this._updateExtra = this._updateExtra.bind(this);
 
-    this._onLogin = this._onLogin.bind(this); // TODO TO DO
+    this._onLogin = this._onLogin.bind(this);
 
     this.saveBunnyClick = this.saveBunnyClick.bind(this);
     this.deleteBunnyClick = this.deleteBunnyClick.bind(this);
 
-    // this.download = this.download.bind(this);
     this.downloadBunny = this.downloadBunny.bind(this);
     document.querySelector("#downloadBttn").addEventListener("click", this.downloadBunny);
 
@@ -46,13 +42,11 @@ export default class App {
         this._updateBg(event, event.target.getAttribute("id"));
       }
     });
-
     document.addEventListener("click", (event) => {
       if (event.target.classList.contains("cBttn")) {
         this._updateClothes(event, event.target.getAttribute("id"));
       }
     });
-
     document.addEventListener("click", (event) => {
       if (event.target.classList.contains("eBttn")) {
         this._updateExtra(event, event.target.getAttribute("id"));
@@ -77,8 +71,7 @@ export default class App {
     // data contains user email aka id - check if new user or old one to load savedBunnies
     this.user = await User.loadOrCreate(data.payload.email);
     this.user.id = data.payload.email;
-    console.log("onlogin user");
-    console.log(this.user);
+    // load saved bunnies
     if (this.user.savedBunnies.length !== 0) {
       if (this.user.savedBunnies[0]) {
         document.querySelector("#saveBunnyBttn0").innerHTML = "outfit #1";
@@ -115,16 +108,12 @@ export default class App {
     if (innerTxt === "save outfit") {
       //this.bunny.updateUser(this.user.id);
       this.bunny.user = this.user.id;
-      this.user.savedBunnies[slotNum] = this.bunny;
       document.querySelector("#" + slotId).innerHTML = "outfit #" + (slotNum + 1);
       document.querySelector("#deleteBunnyBttn" + (slotNum)).style.visibility = "visible";
-
       data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
       this.user.savedBunnies = data.savedBunnies;
     } else { // load outfit
-      console.log("load bunny" + slotNum);
       this.bunny = this.user.savedBunnies[slotNum];
-
       this._updateBg(event, this.bunny.bg);
       this._updateClothes(event, this.bunny.clothes);
       this._updateExtra(event, this.bunny.extra);
@@ -136,7 +125,6 @@ export default class App {
     this.user.savedBunnies[slotNum] = null;
     document.querySelector("#" + slotId).style.visibility = "hidden";
     document.querySelector("#saveBunnyBttn" + (slotNum)).innerHTML = "save outfit";
-
     await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
   }
 
@@ -199,3 +187,8 @@ export default class App {
   }
 }
 window.App = App;
+
+window.onresize = (() => {
+  let imgSize = document.querySelector("#bunnyImg").style.width;
+  document.querySelector("#saveContainer").style.width = imgSize;
+});
