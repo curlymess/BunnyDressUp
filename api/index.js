@@ -31,6 +31,26 @@ const initApi = async (app) => {
 api.use(bodyParser.json());
 api.use(cors());
 console.log("HERE OKAY");
+
+// middleware first to log all requests to the API
+// change api use users id and api get users
+// GET /api/users/:id middleware (mount before handlers that need res.locals.user)
+api.use('/users/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id;                // client should send email or id consistently
+    console.log('Looking up user id:', id);
+    const user = await Users.findOne({ id });
+    if (!user) {
+      return res.status(404).json({ error: "User doesn't exist" });
+    }
+    res.locals.user = user;
+    next();
+  } catch (err) {
+    console.error('Error in /users/:id middleware:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 api.get("/", (req, res) => {
   console.log("inside get");
   res.json({ message: "Hello, world!" });
@@ -129,23 +149,7 @@ api.get("/users/:id", async (req, res) => {
 //   });
 // });
 
-// change api use users id and api get users
-// GET /api/users/:id middleware (mount before handlers that need res.locals.user)
-api.use('/users/:id', async (req, res, next) => {
-  try {
-    const id = req.params.id;                // client should send email or id consistently
-    console.log('Looking up user id:', id);
-    const user = await Users.findOne({ id });
-    if (!user) {
-      return res.status(404).json({ error: "User doesn't exist" });
-    }
-    res.locals.user = user;
-    next();
-  } catch (err) {
-    console.error('Error in /users/:id middleware:', err);
-    res.status(500).json({ error: 'Server error' });
-  }
-});
+
 
 // POST /api/users - create a user (safe)
 api.post('/users', async (req, res) => {
