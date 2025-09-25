@@ -110,7 +110,7 @@ export default class App {
       this.bunny.user = this.user.id;
       document.querySelector("#" + slotId).innerHTML = "outfit #" + (slotNum + 1);
       document.querySelector("#deleteBunnyBttn" + (slotNum)).style.visibility = "visible";
-      data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
+      data = await apiRequest("PATCH", `/users/${this.user.id}/savedBunnies`, { savedBunnies: this.user.savedBunnies });
       this.user.savedBunnies = data.savedBunnies;
     } else { // load outfit
       this.bunny = this.user.savedBunnies[slotNum];
@@ -125,7 +125,7 @@ export default class App {
     this.user.savedBunnies[slotNum] = null;
     document.querySelector("#" + slotId).style.visibility = "hidden";
     document.querySelector("#saveBunnyBttn" + (slotNum)).innerHTML = "save outfit";
-    await apiRequest("PATCH", `/users/${this.user.id}/savedBunnys`, { savedBunnies: this.user.savedBunnies });
+    await apiRequest("PATCH", `/users/${this.user.id}/savedBunnies`, { savedBunnies: this.user.savedBunnies });
   }
 
   // creating img

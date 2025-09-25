@@ -32,7 +32,7 @@ api.use(bodyParser.json());
 api.use(cors());
 console.log("HERE OKAY");
 api.get("/", (req, res) => {
-  console.lotg("inside get");
+  console.log("inside get");
   res.json({ message: "Hello, world!" });
 });
 
@@ -74,7 +74,8 @@ api.use("/protected", async (req, res, next) => {
   let [type, value] = header.split(" ");
   if (type !== "Bearer") return error();
   try {
-    let verified = jwt.verify(value, SECRET);
+    // changed from SECRET to JWT_SECRET
+    let verified = jwt.verify(value, JWT_SECRET);
     console.log("verified is");
     console.log(verified);
     //TODO: verified contains whatever object you signed, e.g. the user's email address.
@@ -128,7 +129,7 @@ api.post("/users", async (req, res) => {
   });
 });
 
-api.patch("/users/:id/savedBunnys", async (req, res) => {
+api.patch("/users/:id/savedBunnies", async (req, res) => {
   let user = res.locals.user;
   if (req.body.savedBunnies) {
     user.savedBunnies[0] = req.body.savedBunnies[0];
@@ -143,7 +144,7 @@ api.patch("/users/:id/savedBunnys", async (req, res) => {
   });
 });
 
-api.post("/users/:id/savedBunnys", async (req, res) => {
+api.post("/users/:id/savedBunnies", async (req, res) => {
   let user = res.locals.user;
   if (!req.body.text) {
     res.json({ error: "null text" });
