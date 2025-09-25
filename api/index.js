@@ -35,10 +35,10 @@ console.log("HERE OKAY");
 // middleware first to log all requests to the API
 // change api use users id and api get users
 // GET /api/users/:id middleware (mount before handlers that need res.locals.user)
-api.use('/users/:id', async (req, res, next) => {
+api.use("/users/:id", async (req, res, next) => {
   try {
-    const id = req.params.id;                // client should send email or id consistently
-    console.log('Looking up user id:', id);
+    const id = req.params.id; // client should send email or id consistently
+    console.log("Looking up user id:", id);
     const user = await Users.findOne({ id });
     if (!user) {
       return res.status(404).json({ error: "User doesn't exist" });
@@ -46,8 +46,8 @@ api.use('/users/:id', async (req, res, next) => {
     res.locals.user = user;
     next();
   } catch (err) {
-    console.error('Error in /users/:id middleware:', err);
-    res.status(500).json({ error: 'Server error' });
+    console.error("Error in /users/:id middleware:", err);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
@@ -127,8 +127,6 @@ api.use("/protected", async (req, res, next) => {
   }
 });
 
-
-
 // api.use("/users/:id", async (req, res, next) => {
 //   let id = req.params.id;
 //   let user = await Users.findOne({ id });
@@ -139,7 +137,6 @@ api.use("/protected", async (req, res, next) => {
 //   res.locals.user = user;
 //   next();
 // });
-
 
 
 // api.post("/users", async (req, res) => {
@@ -156,12 +153,11 @@ api.use("/protected", async (req, res, next) => {
 // });
 
 
-
 // POST /api/users - create a user (safe)
-api.post('/users', async (req, res) => {
+api.post("/users", async (req, res) => {
   try {
     const { id } = req.body;
-    if (!id) return res.status(400).json({ error: 'id required' });
+    if (!id) return res.status(400).json({ error: "id required" });
     const existing = await Users.findOne({ id });
     if (existing) {
       return res.status(200).json({ id: existing.id, savedBunnies: existing.savedBunnies || [] });
@@ -170,25 +166,25 @@ api.post('/users', async (req, res) => {
     await Users.insertOne(doc);
     return res.status(201).json({ id: doc.id, savedBunnies: doc.savedBunnies });
   } catch (err) {
-    console.error('POST /users error:', err);
-    return res.status(500).json({ error: 'Server error' });
+    console.error("POST /users error:", err);
+    return res.status(500).json({ error: "Server error" });
   }
 });
 // PATCH /api/users/:id/savedBunnies - update savedBunnies array
-api.patch('/users/:id/savedBunnies', async (req, res) => {
+api.patch("/users/:id/savedBunnies", async (req, res) => {
   try {
     const user = res.locals.user;
     const { slotIndex, dataUrl } = req.body;
-    if (typeof slotIndex !== 'number' || !dataUrl) {
-      return res.status(400).json({ error: 'slotIndex and dataUrl required' });
+    if (typeof slotIndex !== "number" || !dataUrl) {
+      return res.status(400).json({ error: "slotIndex and dataUrl required" });
     }
     user.savedBunnies = user.savedBunnies || [null, null, null];
     user.savedBunnies[slotIndex] = dataUrl;
     await Users.replaceOne({ id: user.id }, user);
     return res.json({ success: true, savedBunnies: user.savedBunnies });
   } catch (err) {
-    console.error('PATCH savedBunnies error:', err);
-    return res.status(500).json({ error: 'Server error' });
+    console.error("PATCH savedBunnies error:", err);
+    return res.status(500).json({ error: "Server error" });
   }
 });
 
