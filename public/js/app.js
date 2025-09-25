@@ -54,8 +54,13 @@ export default class App {
     });
 
     this.API_KEY = null;
-    auth = new GoogleAuth(CLIENT_ID); // only ONE googleauth per app
-    auth.render(document.querySelector("#loginForm"), this._onLogin);
+
+    // Delay GoogleAuth setup until the page loads and the GSI script attaches window.google.
+    // This avoids "google is not defined" when the GSI script loads async.
+    this._initGoogleAuth = this._initGoogleAuth.bind(this);
+    window.addEventListener("load", this._initGoogleAuth);
+    // auth = new GoogleAuth(CLIENT_ID); // only ONE googleauth per app
+    // auth.render(document.querySelector("#loginForm"), this._onLogin);
   }
 
   async _onLogin(idToken) {
@@ -89,6 +94,36 @@ export default class App {
     let resJson = await apiRequest("POST", `/login`, { idToken: idToken });
     this.API_KEY = resJson.apiKey;
   };
+
+  async _initGoogleAuth() {
+    // Wait for the GSI global (window.google) to be available, up to a timeout.
+    const waitForGoogle = (timeoutMs = 5000) => new Promise((resolve, reject) => {
+      if (window.google) return resolve();
+      const interval = 50;
+      let waited = 0;
+      const id = setInterval(() => {
+        if (window.google) {
+          clearInterval(id);
+          return resolve();
+        }
+        waited += interval;
+        if (waited >= timeoutMs) {
+          clearInterval(id);
+          return reject(new Error("Google Identity script load timeout"));
+        }
+      }, interval);
+    });
+
+    try {
+      await waitForGoogle();
+      auth = new GoogleAuth(CLIENT_ID); // only ONE googleauth per app
+      auth.render(document.querySelector("#loginForm"), this._onLogin);
+    } catch (err) {
+      console.error("Failed to initialize GoogleAuth:", err);
+      // optionally show the sign-in area disabled or a friendly message
+    }
+  }
+
 
   loadData(data) {
     // reset
