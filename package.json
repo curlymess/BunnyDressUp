@@ -15,7 +15,7 @@
     "google-auth-library": "^8.8.0",
     "jsonwebtoken": "^9.0.0",
     "merge-images": "^2.0.0",
-    "mongodb": "^5.5.0",
+    "mongodb": "^5.9.2",
     "nodemon": "^2.0.22",
     "socket.io": "^4.6.1"
   },
