@@ -144,22 +144,34 @@ api.patch("/users/:id/savedBunnies", async (req, res) => {
   });
 });
 
-api.post("/users/:id/savedBunnies", async (req, res) => {
-  let user = res.locals.user;
-  if (!req.body.text) {
-    res.json({ error: "null text" });
-    return;
-  };
-  await Bunnys.insertOne({
-    body: "images/bunny.png",
-    bg: "images/no.png",
-    clothes: "images/no.png",
-    extra: "images/no.png",
-    user: user,
-    id: null
-  });
-  res.json({ success: true });
+// changed post to create a seperate bunny doc linked to user id
+// api.post("/users/:id/savedBunnies", async (req, res) => {
+//   let user = res.locals.user;
+//   if (!req.body.text) {
+//     res.json({ error: "null text" });
+//     return;
+//   };
+//   await Bunnys.insertOne({
+//     body: "images/bunny.png",
+//     bg: "images/no.png",
+//     clothes: "images/no.png",
+//     extra: "images/no.png",
+//     user: user,
+//     id: null
+//   });
+//   res.json({ success: true });
+// });
+// example: create a separate Bunny doc linked to user id
+api.post("/users/:id/bunnys", async (req, res) => {
+  const user = res.locals.user;
+  const { bg, clothes, extra, dataUrl } = req.body;
+  if (!dataUrl) return res.status(400).json({ error: "dataUrl required" });
+
+  const doc = { body: "images/bunny.png", bg, clothes, extra, userId: user.id, dataUrl, createdAt: new Date() };
+  const result = await Bunnys.insertOne(doc);
+  res.json({ success: true, id: result.insertedId });
 });
+
 
 /* Catch-all route to return a JSON error if endpoint not defined.
    Be sure to put all of your endpoints above this one, or they will not be called. */
