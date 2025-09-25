@@ -56,6 +56,26 @@ api.get("/", (req, res) => {
   res.json({ message: "Hello, world!" });
 });
 
+// endpoints
+api.get("/users", async (req, res) => {
+  let users = await Users.find().toArray();
+  res.json({
+    users: users.map((user) => user.id)
+  });
+});
+
+api.get("/users/:id", async (req, res) => {
+  let user = res.locals.user;
+  let { id, savedBunnies } = user;
+
+  res.json({
+    id,
+    savedBunnies
+  });
+});
+
+// now patch and post
+
 // google login endpoints
 api.post("/login", async (req, res) => {
   let idToken = req.body.idToken;
@@ -107,13 +127,7 @@ api.use("/protected", async (req, res, next) => {
   }
 });
 
-// endpoints
-api.get("/users", async (req, res) => {
-  let users = await Users.find().toArray();
-  res.json({
-    users: users.map((user) => user.id)
-  });
-});
+
 
 // api.use("/users/:id", async (req, res, next) => {
 //   let id = req.params.id;
@@ -126,15 +140,7 @@ api.get("/users", async (req, res) => {
 //   next();
 // });
 
-api.get("/users/:id", async (req, res) => {
-  let user = res.locals.user;
-  let { id, savedBunnies } = user;
 
-  res.json({
-    id,
-    savedBunnies
-  });
-});
 
 // api.post("/users", async (req, res) => {
 //   await Users.insertOne({
