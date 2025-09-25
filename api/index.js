@@ -116,18 +116,33 @@ api.get("/users/:id", async (req, res) => {
   });
 });
 
-api.post("/users", async (req, res) => {
-  await Users.insertOne({
-    id: req.body.id,
-    savedBunnies: []
-  });
-  let id = req.body.id;
-  let savedBunnies = [];
-  res.json({
-    id,
-    savedBunnies
-  });
+// api.post("/users", async (req, res) => {
+//   await Users.insertOne({
+//     id: req.body.id,
+//     savedBunnies: []
+//   });
+//   let id = req.body.id;
+//   let savedBunnies = [];
+//   res.json({
+//     id,
+//     savedBunnies
+//   });
+// });
+api.post('/users', async (req, res) => {
+  try {
+    const { id } = req.body;
+    if (!id) return res.status(400).json({ error: 'id required' });
+    const exists = await Users.findOne({ id });
+    if (exists) return res.status(200).json({ id: exists.id, savedBunnies: exists.savedBunnies || [] });
+    const doc = { id, savedBunnies: [null, null, null] };
+    await Users.insertOne(doc);
+    return res.status(201).json({ id: doc.id, savedBunnies: doc.savedBunnies });
+  } catch (err) {
+    console.error('POST /users error:', err);
+    return res.status(500).json({ error: 'Server error' });
+  }
 });
+
 
 api.patch("/users/:id/savedBunnies", async (req, res) => {
   let user = res.locals.user;
